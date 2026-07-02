@@ -102,7 +102,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
     setStatus("success");
   };
 
-  const inputClass = "w-full rounded-[var(--radius-sm)] border border-[var(--line-strong)] bg-white px-3.5 py-3 text-[15px] text-[var(--ink)] placeholder:text-[#6B7A75] transition duration-200 focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 focus:outline-none";
+  const inputClass = "w-full rounded-[var(--radius-sm)] border border-[var(--line-strong)] bg-white px-3.5 py-3 text-base text-[var(--ink)] placeholder:text-[#6B7A75] transition duration-200 focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 focus:outline-none";
   const labelClass = "block text-sm font-semibold text-[var(--ink)]";
   const fieldClass = "space-y-1.5";
   const optionalLabel = <span className="ml-2 inline-flex align-middle text-[12px] font-normal italic text-slate-400">{copy.optional}</span>;

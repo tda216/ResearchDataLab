@@ -83,9 +83,9 @@ export function SectionHeader({
   description,
   className = "",
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
   className?: string;
 }) {
   return (
@@ -94,7 +94,7 @@ export function SectionHeader({
       <h2 className="text-balance whitespace-pre-line font-[family-name:var(--font-editorial)] text-[clamp(2.25rem,4vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-[var(--ink)]">
         {title}
       </h2>
-      <p className="mt-5 max-w-none text-base leading-7 text-[var(--ink-muted)] sm:text-[1.0625rem]">{description}</p>
+      {description && <p className="mt-5 max-w-none text-base leading-7 text-[var(--ink-muted)] sm:text-[1.0625rem]">{description}</p>}
     </div>
   );
 }
@@ -243,7 +243,7 @@ export function FileCard({
 
 export function StepCard({ number, title, description, isLast = false }: { number: string; title: string; description: string; isLast?: boolean }) {
   return (
-    <article className="group relative flex flex-1 flex-col gap-6 md:gap-8 pt-6 sm:pt-8 md:px-4 md:pt-0">
+    <article className="group relative flex flex-1 flex-col gap-6 pl-10 pt-6 sm:pl-12 sm:pt-8 md:gap-8 md:px-4 md:pt-0">
       {/* Connecting line (Desktop) */}
       {!isLast && (
         <div className="absolute left-[calc(50%+2rem)] right-[calc(-50%+2rem)] top-[1.125rem] hidden h-[2px] bg-[var(--line-strong)] md:block" />

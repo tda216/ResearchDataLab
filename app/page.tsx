@@ -153,7 +153,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
               <p id="research-community" className="text-center text-[13px] font-semibold tracking-[0.04em] text-[var(--ink-faint)] sm:text-[14px]">
                 {copy.socialProof.heading}
               </p>
-              <div className="mx-auto mt-8 flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-6 sm:gap-x-16">
+              <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 place-items-center gap-x-8 gap-y-6 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-16">
                 {copy.socialProof.institutions.map(([shortName, fullName]) => {
                   const logoSrc = institutionLogos[shortName];
                   return (
@@ -194,7 +194,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           <Container>
             <div className="flex flex-col gap-12">
               <RevealOnScroll>
-                <SectionHeader eyebrow={copy.workflow.eyebrow} title={copy.workflow.title} description={copy.workflow.description} className="max-w-4xl" />
+                <SectionHeader eyebrow={copy.workflow.eyebrow} title={copy.workflow.title} className="max-w-4xl" />
               </RevealOnScroll>
               
               <div className="relative mt-4 flex flex-col md:flex-row">
@@ -269,7 +269,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
                 <span className="text-sm font-medium text-[var(--ink-muted)]">{copy.deliverables.packageSummary}</span>
               </div>
             </RevealOnScroll>
-            <div className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
               {copy.deliverables.items.map(([name, description], index) => (
                 <RevealOnScroll key={name} delay={(index % 4) * 0.05} className={index === 6 ? "sm:col-span-2" : ""}>
                   <FileCard name={name} description={description} size={index === 6 ? "wide" : "standard"} />

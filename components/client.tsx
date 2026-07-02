@@ -28,6 +28,7 @@ export function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<HeaderTheme>("transparent");
   const [scrolled, setScrolled] = useState(false);
+  const [showStickyCta, setShowStickyCta] = useState(false);
   const copy = getContent(locale).nav;
   const isDark = theme === "dark";
 
@@ -39,7 +40,10 @@ export function Header({ locale }: { locale: Locale }) {
   }, [open]);
 
   useEffect(() => {
-    const updateScrolled = () => setScrolled(window.scrollY > 32);
+    const updateScrolled = () => {
+      setScrolled(window.scrollY > 32);
+      setShowStickyCta(window.scrollY > 600);
+    };
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-header-theme]"));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -126,6 +130,23 @@ export function Header({ locale }: { locale: Locale }) {
         )}
       </AnimatePresence>
       </header>
+      <AnimatePresence>
+        {showStickyCta && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-4 left-4 right-4 z-50 md:hidden"
+          >
+            <a
+              href="#feasibility-form"
+              className="flex min-h-14 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent)] px-5 text-[15px] font-bold text-white shadow-[0_16px_32px_-12px_rgba(0,167,142,0.6)] transition-all duration-300 active:scale-[0.98]"
+            >
+              {copy.cta}
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
