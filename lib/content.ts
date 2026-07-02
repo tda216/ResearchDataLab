@@ -20,7 +20,7 @@ const en = {
   },
   hero: {
     titleLead: "Research-ready datasets",
-    titleAccent: "for rigorous academic work",
+    titleAccent: "for thesis and academic research",
     description: "Clean, documented, reproducible datasets for literature reviews, bibliometric studies, public web research, and thesis projects.",
     primary: "Check data feasibility",
   },
@@ -51,7 +51,7 @@ const en = {
   },
   sampleReport: {
     reportLabel: "Feasibility report",
-    statusLabel: "Reviewed",
+    statusLabel: "Sample review",
     eyebrow: "Sample review",
     title: "A feasibility check before collection begins",
     description: "Before collecting data, we map available sources, expected fields, access risks, and recommended deliverables.",
@@ -61,6 +61,7 @@ const en = {
     notes: { label: "Access notes", value: "Prefer open, API-accessible, and client-authorized sources" },
     risks: { label: "Risks to avoid", value: "Google Scholar scraping · paywalled full text without authorization · sensitive personal data" },
     output: { label: "Suggested output", value: "cleaned_dataset.csv · data_dictionary.xlsx · methodology_note.pdf" },
+    cta: "Request your feasibility check",
   },
   useCases: {
     eyebrow: "Applications",
@@ -89,16 +90,7 @@ const en = {
     ],
   },
   standards: {
-    eyebrow: "Why Research Data Lab",
-    title: "Beyond scraping. Research-ready delivery.",
-    description: "The output is designed for analysis, methodology writing, and academic review — not just raw extraction.",
-    items: [
-      ["Research-first workflow", "Every project starts with research goals, target fields, source feasibility, and methodology requirements."],
-      ["Documentation included", "Datasets arrive with notes, logs, and field explanations, not just raw files."],
-      ["Ethics-aware by default", "We avoid private, paywalled, sensitive, or unauthorized collection without proper permission and approval."],
-      ["Clean analysis-ready files", "Data is deduplicated, normalized, structured, and prepared for Python, R, SPSS, Stata, Excel, or BI tools."],
-      ["Reproducible when needed", "Scripts or notebooks can be included so the collection and cleaning process is easier to explain or repeat."],
-    ],
+    summaryItems: ["Research-first workflow", "Documentation included", "Ethics-aware", "Analysis-ready", "Reproducible"],
   },
   ethics: {
     accessLabel: "Access protocol",
@@ -107,6 +99,7 @@ const en = {
     title: "Ethics-aware data collection",
     description: "We work with public, permitted, API-accessible, open, or client-authorized data sources. We do not bypass paywalls, scrape private accounts, or collect sensitive personal data without proper authorization and ethics clearance.",
     note: "We flag source and access risks early. Researchers remain responsible for any institutional ethics approval required by their project.",
+    methodologyNote: "Each project can include a short methodology note describing collection scope, source access, cleaning steps, and known limitations.",
     safeguards: "Collection safeguards",
     reviewed: "Reviewed before collection",
     items: ["No paywall bypassing", "No private account scraping", "No unauthorized sensitive personal data collection", "Respect source limitations and access rules", "Source logs and methodology notes included", "Client authorization required for restricted sources"],
@@ -116,6 +109,7 @@ const en = {
     eyebrow: "Service packages",
     title: "Choose the right starting point",
     description: "Begin with feasibility, review a sample, then decide whether a full dataset project makes sense.",
+    note: "Project-based pricing after feasibility review. Start with a free feasibility check before any paid work.",
     projectBased: "Project-based",
     items: [
       { title: "Data Feasibility Check", label: "Best first step", description: "A quick review of your topic, target data, possible sources, risks, and expected fields.", items: ["Source availability review", "Field feasibility", "Risk notes", "Suggested next step"], cta: "Request feasibility check" },
@@ -164,7 +158,7 @@ const vi: typeof en = {
   },
   hero: {
     titleLead: "Bộ dữ liệu sẵn sàng cho nghiên cứu",
-    titleAccent: "cho công trình học thuật chặt chẽ",
+    titleAccent: "cho luận văn và nghiên cứu học thuật",
     description: "Dữ liệu sạch, có tài liệu và có thể tái lập cho luận văn và dự án nghiên cứu.",
     primary: "Kiểm tra tính khả thi",
   },
@@ -195,7 +189,7 @@ const vi: typeof en = {
   },
   sampleReport: {
     reportLabel: "Báo cáo khả thi",
-    statusLabel: "Đã đánh giá",
+    statusLabel: "Mẫu đánh giá",
     eyebrow: "Mẫu đánh giá",
     title: "Kiểm tra tính khả thi trước khi thu thập",
     description: "Trước khi thu thập dữ liệu, chúng tôi lập bản đồ các nguồn có sẵn, các trường dự kiến, rủi ro truy cập và đề xuất đầu ra.",
@@ -205,6 +199,7 @@ const vi: typeof en = {
     notes: { label: "Ghi chú truy cập", value: "Ưu tiên các nguồn mở, có API và được sự cho phép của khách hàng" },
     risks: { label: "Rủi ro cần tránh", value: "Cào dữ liệu Google Scholar · tải toàn văn bài báo có bản quyền trái phép · dữ liệu cá nhân nhạy cảm" },
     output: { label: "Đầu ra đề xuất", value: "cleaned_dataset.csv · data_dictionary.xlsx · methodology_note.pdf" },
+    cta: "Yêu cầu đánh giá khả thi",
   },
   useCases: {
     eyebrow: "Ứng dụng",
@@ -233,16 +228,7 @@ const vi: typeof en = {
     ],
   },
   standards: {
-    eyebrow: "Tại sao chọn Research Data Lab",
-    title: "Không chỉ thu thập. Bàn giao dữ liệu sẵn sàng cho nghiên cứu.",
-    description: "Đầu ra được thiết kế để có thể kiểm tra, phân tích và mô tả trong một quy trình học thuật nghiêm túc.",
-    items: [
-      ["Quy trình bắt đầu từ câu hỏi nghiên cứu", "Mỗi dự án bắt đầu bằng mục tiêu nghiên cứu, trường dữ liệu, tính khả thi của nguồn và yêu cầu phương pháp."],
-      ["Có tài liệu đi kèm", "Bộ dữ liệu được bàn giao cùng ghi chú, nhật ký và giải thích trường dữ liệu, không chỉ có tệp thô."],
-      ["Mặc định chú trọng đạo đức", "Chúng tôi tránh dữ liệu riêng tư, trả phí, nhạy cảm hoặc không được phép nếu chưa có phê duyệt phù hợp."],
-      ["Tệp sạch, sẵn sàng phân tích", "Dữ liệu được khử trùng, chuẩn hóa, cấu trúc và chuẩn bị cho Python, R, SPSS, Stata, Excel hoặc công cụ BI."],
-      ["Có thể tái lập khi cần", "Có thể kèm mã hoặc notebook để quy trình thu thập và làm sạch dễ giải thích hoặc lặp lại hơn."],
-    ],
+    summaryItems: ["Quy trình nghiên cứu", "Có tài liệu đi kèm", "Chú trọng đạo đức", "Sẵn sàng phân tích", "Có thể tái lập"],
   },
   ethics: {
     accessLabel: "Giao thức truy cập",
@@ -251,6 +237,7 @@ const vi: typeof en = {
     title: "Thu thập dữ liệu có cân nhắc đạo đức",
     description: "Chúng tôi chỉ làm việc với nguồn công khai, được phép, có API, nguồn mở hoặc được khách hàng ủy quyền. Chúng tôi không vượt tường phí, thu thập từ tài khoản riêng tư hay lấy dữ liệu cá nhân nhạy cảm khi chưa có ủy quyền và phê duyệt đạo đức phù hợp.",
     note: "Chúng tôi cảnh báo rủi ro về nguồn và quyền truy cập. Nhà nghiên cứu vẫn chịu trách nhiệm về các phê duyệt của tổ chức hoặc hội đồng đạo đức mà dự án yêu cầu.",
+    methodologyNote: "Mỗi dự án có thể bao gồm một ghi chú phương pháp ngắn mô tả phạm vi thu thập, quyền truy cập nguồn, các bước làm sạch và những giới hạn đã biết.",
     safeguards: "Biện pháp kiểm soát",
     reviewed: "Đánh giá trước khi thu thập",
     items: ["Không vượt tường phí", "Không thu thập từ tài khoản riêng tư", "Không thu thập trái phép dữ liệu cá nhân nhạy cảm", "Tôn trọng giới hạn và quy tắc truy cập của nguồn", "Kèm nhật ký nguồn và ghi chú phương pháp", "Nguồn hạn chế cần có ủy quyền của khách hàng"],
@@ -260,6 +247,7 @@ const vi: typeof en = {
     eyebrow: "Gói dịch vụ",
     title: "Bắt đầu với mức hỗ trợ phù hợp",
     description: "Bắt đầu từ đánh giá khả thi, kiểm chứng bằng mẫu, sau đó quyết định dự án dữ liệu đầy đủ có phù hợp hay không.",
+    note: "Chi phí được xác định theo dự án sau bước đánh giá khả thi. Hãy bắt đầu bằng đánh giá miễn phí trước khi thực hiện bất kỳ công việc có phí nào.",
     projectBased: "Theo từng dự án",
     items: [
       { title: "Đánh giá tính khả thi", label: "Bước đầu phù hợp nhất", description: "Đánh giá nhanh chủ đề, dữ liệu mục tiêu, nguồn tiềm năng, rủi ro và các trường dự kiến.", items: ["Đánh giá nguồn sẵn có", "Tính khả thi của trường dữ liệu", "Ghi chú rủi ro", "Đề xuất bước tiếp theo"], cta: "Yêu cầu đánh giá miễn phí" },

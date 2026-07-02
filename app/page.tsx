@@ -2,17 +2,13 @@ import Link from "next/link";
 import {
   BookOpenCheck,
   Check,
-  ClipboardCheck,
   DatabaseZap,
   FileCheck2,
   FileSearch,
   Files,
   Fingerprint,
-  FlaskConical,
-  GitBranch,
   Network,
   ScanSearch,
-  ShieldCheck,
   Sparkles,
   TableProperties,
 } from "lucide-react";
@@ -35,7 +31,6 @@ import { getContent, type Locale } from "@/lib/content";
 
 const problemIcons = [Files, ScanSearch, Sparkles, BookOpenCheck];
 const useCaseIcons = [FileSearch, Network, DatabaseZap, TableProperties];
-const standardIcons = [FlaskConical, ClipboardCheck, ShieldCheck, TableProperties, GitBranch];
 
 const networkNodes = [[3, 56], [10, 16], [21, 62], [34, 30], [45, 74], [57, 42], [70, 80], [83, 55], [96, 88]];
 
@@ -116,13 +111,13 @@ export function LandingPage({ locale }: { locale: Locale }) {
     <div lang={locale}>
       <Header locale={locale} />
       <main id="content">
-        <section id="top" className="relative isolate flex min-h-[calc(100dvh-4.5rem)] scroll-mt-[4.5rem] overflow-hidden border-b bg-white">
+        <section id="top" aria-labelledby="hero-title" className="relative isolate flex min-h-[calc(100dvh-4.5rem)] scroll-mt-[4.5rem] overflow-hidden border-b bg-white">
           <ResearchConstellation side="left" locale={locale} />
           <ResearchConstellation side="right" locale={locale} />
           <MobileResearchLine />
           <Container className="relative z-10 flex items-center justify-center pt-10 pb-24 sm:pt-14 sm:pb-28 lg:pb-32">
             <RevealOnScroll className="mx-auto w-full text-center">
-              <h1 className="text-balance mx-auto max-w-[74rem] font-[family-name:var(--font-editorial)] text-[clamp(2.6rem,11vw,5.4rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[var(--ink)] sm:text-[clamp(3.4rem,7vw,5.4rem)] sm:leading-[0.94]">
+              <h1 id="hero-title" className="text-balance mx-auto max-w-[74rem] font-[family-name:var(--font-editorial)] text-[clamp(2.6rem,11vw,5.4rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[var(--ink)] sm:text-[clamp(3.4rem,7vw,5.4rem)] sm:leading-[0.94]">
                 <span className="block">{copy.hero.titleLead}</span>
                 <span className="mt-1 block font-normal italic">{copy.hero.titleAccent}</span>
               </h1>
@@ -162,13 +157,16 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="sample-report" className="bg-[var(--canvas)] border-b pb-20">
+        <Section id="sample-report" className="border-y bg-[var(--accent-soft)]/35 pb-20">
           <Container>
             <RevealOnScroll>
               <SectionHeader className="mx-auto flex flex-col items-center text-center" eyebrow={copy.sampleReport.eyebrow} title={copy.sampleReport.title} description={copy.sampleReport.description} />
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
               <FeasibilityReportCard content={copy.sampleReport} />
+              <div className="mt-8 flex justify-center">
+                <Button>{copy.sampleReport.cta}</Button>
+              </div>
             </RevealOnScroll>
           </Container>
         </Section>
@@ -213,22 +211,15 @@ export function LandingPage({ locale }: { locale: Locale }) {
               ))}
             </div>
 
-            <RevealOnScroll className="mt-20 border-t border-[var(--line-strong)] pt-16">
-              <SectionHeader eyebrow={copy.standards.eyebrow} title={copy.standards.title} description={copy.standards.description} />
-              <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {copy.standards.items.map(([title, description], index) => {
-                  const Icon = standardIcons[index];
-                  return (
-                    <div key={title} className="flex gap-4">
-                      <Icon size={20} className="mt-1 shrink-0 text-[var(--accent)]" strokeWidth={1.75} />
-                      <div>
-                        <h4 className="font-semibold text-[var(--ink)]">{title}</h4>
-                        <p className="mt-2 text-[15px] leading-7 text-[var(--ink-muted)]">{description}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+            <RevealOnScroll className="mt-10 border-y border-[var(--line-strong)] py-5">
+              <ul className="flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold text-[var(--ink-muted)]">
+                {copy.standards.summaryItems.map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <Check aria-hidden="true" size={15} strokeWidth={2} className="text-[var(--accent)]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </RevealOnScroll>
           </Container>
         </Section>
@@ -251,6 +242,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
                       <h2 className="text-balance mt-5 font-[family-name:var(--font-editorial)] text-[clamp(2.25rem,4vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">{copy.ethics.title}</h2>
                       <p className="mt-6 max-w-[55ch] text-base leading-7 text-[var(--ink-muted)]">{copy.ethics.description}</p>
                       <p className="mt-6 border-l-2 border-[var(--accent)] pl-4 text-sm leading-6 text-[var(--ink-muted)]">{copy.ethics.note}</p>
+                      <p className="mt-4 pl-[1.125rem] text-sm leading-6 text-[var(--ink-muted)]">{copy.ethics.methodologyNote}</p>
                     </div>
                   </div>
                   <div className="p-6 sm:p-10 lg:p-12">
@@ -274,6 +266,9 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <Section id="packages" className="border-y bg-white">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.packages.eyebrow} title={copy.packages.title} description={copy.packages.description} /></RevealOnScroll>
+            <RevealOnScroll>
+              <p className="mt-6 max-w-2xl border-l-2 border-[var(--accent)] pl-4 text-sm leading-6 text-[var(--ink-muted)]">{copy.packages.note}</p>
+            </RevealOnScroll>
             <div className="mt-14 grid items-stretch gap-4 md:grid-cols-2">
               {copy.packages.items.map((item, index) => <RevealOnScroll key={item.title} delay={(index % 2) * 0.06}><PackageCard {...item} projectLabel={copy.packages.projectBased} /></RevealOnScroll>)}
             </div>
@@ -311,7 +306,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
               <p className="mt-4 text-sm text-[var(--ink-muted)]">{copy.footer.tagline}</p>
             </div>
             <div className="flex flex-col items-start gap-2 text-sm font-medium">
-              <a href="mailto:trinhducan21@gmail.com" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">trinhducan21@gmail.com</a>
+              <a href="mailto:hello@researchdatalab.xyz" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">hello@researchdatalab.xyz</a>
               <a href="https://zalo.me/84961636906" target="_blank" rel="noreferrer" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">Zalo · +84 961636906</a>
             </div>
             <p className="max-w-sm text-sm leading-6 text-[var(--ink-muted)] lg:justify-self-end lg:text-right">{copy.footer.rights}</p>

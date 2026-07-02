@@ -89,7 +89,7 @@ export function FloatingVisual({ children }: { children: ReactNode }) {
 }
 
 export function FAQItem({ index, question, answer }: { index: string; question: string; answer: string }) {
-  const [open, setOpen] = useState(index === "01");
+  const [open, setOpen] = useState(index === "01" || index === "02");
   return (
     <div className={`border-t border-[var(--line-strong)] transition-colors last:border-b ${open ? "bg-white" : ""}`}>
       <button

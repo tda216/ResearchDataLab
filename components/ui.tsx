@@ -121,7 +121,7 @@ export function FeasibilityReportCard({ content }: { content: FeasibilityReportC
   ];
 
   return (
-    <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line-strong)] bg-white shadow-[var(--shadow-panel)] transition-shadow duration-500 hover:shadow-xl sm:mt-14">
+    <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-[var(--radius-lg)] border border-[var(--accent)]/30 bg-white shadow-[0_34px_80px_-50px_rgba(13,148,136,0.28)] transition-shadow duration-500 hover:shadow-[0_38px_90px_-50px_rgba(13,148,136,0.34)] sm:mt-14">
       <div className="technical-grid absolute inset-0 opacity-[0.15]" />
       <div className="relative bg-[var(--surface-subtle)]/50 border-b border-[var(--line)] px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
