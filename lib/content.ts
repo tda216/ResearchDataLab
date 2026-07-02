@@ -7,7 +7,6 @@ const en = {
       ["Process", "#process"],
       ["Deliverables", "#deliverables"],
       ["Ethics", "#ethics"],
-      ["Packages", "#packages"],
     ],
     descriptor: "research data studio",
     cta: "Free feasibility check",
@@ -24,6 +23,15 @@ const en = {
     description: "Clean, documented, reproducible datasets for literature reviews, bibliometric studies, public web research, and thesis projects.",
     primary: "Check data feasibility",
     secondary: "View sample review",
+  },
+  socialProof: {
+    heading: "Trusted by researchers and students from...",
+    institutions: [
+      ["HUST", "Hanoi University of Science and Technology"],
+      ["LEEDS", "University of Leeds"],
+      ["LBU", "Leeds Beckett University"],
+      ["CHESTER", "University of Chester"],
+    ],
   },
   problem: {
     eyebrow: "Research data problem",
@@ -43,6 +51,7 @@ const en = {
     state: "Before collection",
     stateValue: "Scope the project before collecting data",
     required: "Required first step",
+    pricingNote: "Pricing is project-based. Step 1 (Feasibility Check) is 100% free.",
     steps: [
       ["01", "Submit your research topic", "Tell us your topic, target data, preferred sources, expected fields, estimated size, and deadline."],
       ["02", "Feasibility check", "We review source availability, access options, data quality, limitations, and possible ethics or source risks."],
@@ -66,14 +75,13 @@ const en = {
     badges: ["Open / API sources", "Access risks flagged"],
   },
   useCases: {
-    eyebrow: "Applications",
+    eyebrow: "Data Types We Handle",
     title: "Built for real research workflows",
     description: "Common academic data projects we help scope, collect, clean, and document.",
     items: [
       { label: "Literature review", title: "Literature Review Dataset", description: "Collect paper metadata such as title, authors, DOI, abstract, year, journal, keywords, and source links.", fields: ["DOI", "abstract", "authors", "year", "journal"], bestFor: "SLR, scoping review, thesis background" },
       { label: "Bibliometric analysis", title: "Bibliometric Dataset", description: "Prepare publication data for trend analysis, citation mapping, co-author networks, institutions, and topic exploration.", fields: ["citations", "authors", "affiliations", "topics"], bestFor: "trends, networks, publication mapping" },
       { label: "Public web research", title: "Public Web Dataset", description: "Collect structured records from public job postings, policy pages, university programs, listings, or news metadata.", fields: ["URL", "category", "date", "record ID"], bestFor: "policy, jobs, education, public listings" },
-      { label: "Dataset preparation", title: "Dataset Cleaning", description: "Clean and standardize existing CSV, Excel, JSON, or exported research files for analysis and reporting.", fields: ["deduplicate", "normalize", "validate", "document"], bestFor: "messy CSV and Excel exports" },
     ],
   },
   deliverables: {
@@ -106,19 +114,6 @@ const en = {
     items: ["No paywall bypassing", "No private account scraping", "No unauthorized sensitive personal data collection", "Respect source limitations and access rules", "Source logs and methodology notes included", "Client authorization required for restricted sources"],
     logs: [["Logged", "Access basis"], ["Recorded", "Access date"], ["Included", "Source notes"]],
   },
-  packages: {
-    eyebrow: "Service packages",
-    title: "Choose the right starting point",
-    description: "Begin with feasibility, review a sample, then decide whether a full dataset project makes sense.",
-    note: "Project-based pricing after feasibility review. Start with a free feasibility check before any paid work.",
-    projectBased: "Project-based",
-    items: [
-      { title: "Data Feasibility Check", label: "Best first step", description: "A quick review of your topic, target data, possible sources, risks, and expected fields.", items: ["Source availability review", "Field feasibility", "Risk notes", "Suggested next step"], cta: "Request feasibility check" },
-      { title: "Sample Dataset", description: "A small sample dataset to validate structure, quality, and usefulness before full collection.", items: ["50–200 sample records", "Initial schema", "Source notes", "Quality observations"], cta: "Request sample dataset" },
-      { title: "Full Research Dataset", label: "Most complete", description: "A complete research-ready dataset with cleaning, documentation, and optional reproducible scripts.", items: ["Raw data where applicable", "Cleaned dataset", "Data dictionary", "Source log", "Methodology note", "Optional Python script/notebook"], cta: "Discuss full dataset", featured: true },
-      { title: "Dataset Cleaning", description: "For researchers who already have messy files and need them cleaned, standardized, and documented.", items: ["CSV/Excel cleaning", "Deduplication", "Field normalization", "Data dictionary", "Clean export"], cta: "Clean existing dataset" },
-    ],
-  },
   finalCta: {
     eyebrow: "Free feasibility check",
     title: "Tell us what data you need",
@@ -133,7 +128,7 @@ const en = {
 
 const vi: typeof en = {
   nav: {
-    links: [["Dịch vụ", "#services"], ["Quy trình", "#process"], ["Bàn giao", "#deliverables"], ["Đạo đức", "#ethics"], ["Gói dịch vụ", "#packages"]],
+    links: [["Dịch vụ", "#services"], ["Quy trình", "#process"], ["Bàn giao", "#deliverables"], ["Đạo đức", "#ethics"]],
     descriptor: "hệ thống dữ liệu nghiên cứu",
     cta: "Kiểm tra tính khả thi miễn phí",
     open: "Mở menu điều hướng",
@@ -149,6 +144,15 @@ const vi: typeof en = {
     description: "Dữ liệu sạch, có tài liệu và có thể tái lập cho luận văn và dự án nghiên cứu.",
     primary: "Kiểm tra tính khả thi",
     secondary: "Xem mẫu đánh giá",
+  },
+  socialProof: {
+    heading: "Được tin tưởng bởi các nhà nghiên cứu và sinh viên từ...",
+    institutions: [
+      ["HUST", "Đại học Bách khoa Hà Nội"],
+      ["LEEDS", "University of Leeds"],
+      ["LBU", "Leeds Beckett University"],
+      ["CHESTER", "University of Chester"],
+    ],
   },
   problem: {
     eyebrow: "Khoảng trống dữ liệu nghiên cứu",
@@ -168,6 +172,7 @@ const vi: typeof en = {
     state: "Trước khi thu thập",
     stateValue: "Chốt phạm vi dự án trước khi thu thập dữ liệu",
     required: "Bước đầu bắt buộc",
+    pricingNote: "Chi phí được tính theo từng dự án. Bước 1 (Đánh giá tính khả thi) hoàn toàn miễn phí.",
     steps: [
       ["01", "Gửi chủ đề nghiên cứu", "Cho chúng tôi biết chủ đề, dữ liệu mục tiêu, nguồn ưu tiên, các trường cần có, quy mô dự kiến và thời hạn."],
       ["02", "Đánh giá tính khả thi", "Chúng tôi xem xét nguồn, phương án truy cập, chất lượng dữ liệu, giới hạn và các rủi ro về đạo đức hoặc điều khoản nguồn."],
@@ -191,14 +196,13 @@ const vi: typeof en = {
     badges: ["Nguồn mở / API", "Đã ghi nhận rủi ro"],
   },
   useCases: {
-    eyebrow: "Ứng dụng",
+    eyebrow: "Các loại dữ liệu chúng tôi xử lý",
     title: "Được thiết kế cho quy trình nghiên cứu thực tế",
     description: "Các dạng dự án dữ liệu học thuật phổ biến mà chúng tôi hỗ trợ, được xác định theo câu hỏi phân tích của nghiên cứu.",
     items: [
       { label: "Tổng quan tài liệu", title: "Dữ liệu tổng quan tài liệu", description: "Thu thập siêu dữ liệu bài báo như tiêu đề, tác giả, DOI, tóm tắt, năm, tạp chí, từ khóa và liên kết nguồn.", fields: ["DOI", "tóm tắt", "tác giả", "năm", "tạp chí"], bestFor: "SLR, scoping review, nền tảng luận văn" },
       { label: "Phân tích trắc lượng", title: "Dữ liệu trắc lượng thư mục", description: "Chuẩn bị dữ liệu công bố cho phân tích xu hướng, bản đồ trích dẫn, mạng lưới đồng tác giả, tổ chức và chủ đề.", fields: ["trích dẫn", "tác giả", "đơn vị", "chủ đề"], bestFor: "xu hướng, mạng lưới, bản đồ công bố" },
       { label: "Nghiên cứu web công khai", title: "Dữ liệu web công khai", description: "Thu thập bản ghi có cấu trúc từ tin tuyển dụng, trang chính sách, chương trình đại học, danh mục công khai hoặc siêu dữ liệu tin tức.", fields: ["URL", "phân loại", "ngày", "mã bản ghi"], bestFor: "chính sách, việc làm, giáo dục, danh mục công" },
-      { label: "Chuẩn bị dữ liệu", title: "Làm sạch dữ liệu", description: "Làm sạch và chuẩn hóa tệp CSV, Excel, JSON hoặc dữ liệu xuất sẵn để phục vụ phân tích và báo cáo.", fields: ["khử trùng", "chuẩn hóa", "kiểm tra", "lập tài liệu"], bestFor: "tệp CSV và Excel lộn xộn" },
     ],
   },
   deliverables: {
@@ -230,19 +234,6 @@ const vi: typeof en = {
     reviewed: "Đánh giá trước khi thu thập",
     items: ["Không vượt tường phí", "Không thu thập từ tài khoản riêng tư", "Không thu thập trái phép dữ liệu cá nhân nhạy cảm", "Tôn trọng giới hạn và quy tắc truy cập của nguồn", "Kèm nhật ký nguồn và ghi chú phương pháp", "Nguồn hạn chế cần có ủy quyền của khách hàng"],
     logs: [["Đã ghi", "Cơ sở truy cập"], ["Đã lưu", "Ngày truy cập"], ["Có kèm", "Ghi chú nguồn"]],
-  },
-  packages: {
-    eyebrow: "Gói dịch vụ",
-    title: "Bắt đầu với mức hỗ trợ phù hợp",
-    description: "Bắt đầu từ đánh giá khả thi, kiểm chứng bằng mẫu, sau đó quyết định dự án dữ liệu đầy đủ có phù hợp hay không.",
-    note: "Chi phí được xác định theo dự án sau bước đánh giá khả thi. Hãy bắt đầu bằng đánh giá miễn phí trước khi thực hiện bất kỳ công việc có phí nào.",
-    projectBased: "Theo từng dự án",
-    items: [
-      { title: "Đánh giá tính khả thi", label: "Bước đầu phù hợp nhất", description: "Đánh giá nhanh chủ đề, dữ liệu mục tiêu, nguồn tiềm năng, rủi ro và các trường dự kiến.", items: ["Đánh giá nguồn sẵn có", "Tính khả thi của trường dữ liệu", "Ghi chú rủi ro", "Đề xuất bước tiếp theo"], cta: "Yêu cầu đánh giá miễn phí" },
-      { title: "Bộ dữ liệu mẫu", description: "Một mẫu nhỏ để kiểm tra cấu trúc, chất lượng và mức độ hữu ích trước khi thu thập đầy đủ.", items: ["50–200 bản ghi mẫu", "Schema ban đầu", "Ghi chú nguồn", "Nhận xét chất lượng"], cta: "Yêu cầu dữ liệu mẫu" },
-      { title: "Bộ dữ liệu nghiên cứu đầy đủ", label: "Đầy đủ nhất", description: "Bộ dữ liệu sẵn sàng cho nghiên cứu với làm sạch, tài liệu và mã tái lập tùy chọn.", items: ["Dữ liệu thô khi phù hợp", "Dữ liệu đã làm sạch", "Từ điển dữ liệu", "Nhật ký nguồn", "Ghi chú phương pháp", "Mã Python/notebook tùy chọn"], cta: "Trao đổi dự án", featured: true },
-      { title: "Chỉ làm sạch dữ liệu", description: "Dành cho nhà nghiên cứu đã có tệp dữ liệu lộn xộn và cần làm sạch, chuẩn hóa, lập tài liệu.", items: ["Làm sạch CSV/Excel", "Khử trùng lặp", "Chuẩn hóa trường", "Từ điển dữ liệu", "Tệp xuất sạch"], cta: "Làm sạch dữ liệu của tôi" },
-    ],
   },
   finalCta: {
     eyebrow: "Đánh giá khả thi miễn phí",

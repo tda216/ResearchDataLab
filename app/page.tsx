@@ -10,7 +10,6 @@ import {
   Network,
   ScanSearch,
   Sparkles,
-  TableProperties,
 } from "lucide-react";
 import { Header, RevealOnScroll } from "@/components/client";
 import { BrandLogo } from "@/components/BrandLogo";
@@ -22,7 +21,6 @@ import {
   FeasibilityReportCard,
   FeatureCard,
   FileCard,
-  PackageCard,
   Section,
   SectionHeader,
   StepCard,
@@ -30,7 +28,7 @@ import {
 import { getContent, type Locale } from "@/lib/content";
 
 const problemIcons = [Files, ScanSearch, Sparkles, BookOpenCheck];
-const useCaseIcons = [FileSearch, Network, DatabaseZap, TableProperties];
+const useCaseIcons = [FileSearch, Network, DatabaseZap];
 
 const networkNodes = [[3, 56], [10, 16], [21, 62], [34, 30], [45, 74], [57, 42], [70, 80], [83, 55], [96, 88]];
 
@@ -39,8 +37,8 @@ function ResearchConstellation({ side, locale }: { side: "left" | "right"; local
   const isVi = locale === "vi";
   const tags = isLeft
     ? isVi
-      ? ["Đánh giá nguồn mở", "4.247 bản ghi", "CSV · schema v1.3"]
-      : ["Open-source review", "4,247 records", "CSV · schema v1.3"]
+      ? ["OpenAlex + Crossref", "4.247 bản ghi", "CSV · schema v1.3"]
+      : ["OpenAlex + Crossref", "4,247 records", "CSV · schema v1.3"]
     : isVi
       ? ["Đã đánh giá nguồn", "Dữ liệu thiếu · 0,8%", "Giấy phép mở"]
       : ["Source review complete", "Missing values · 0.8%", "Open license"];
@@ -72,7 +70,7 @@ function ResearchConstellation({ side, locale }: { side: "left" | "right"; local
         <p className="text-[13px] font-semibold text-[var(--ink)]">{isLeft ? (isVi ? "Nguồn" : "Source") : (isVi ? "Phương pháp" : "Methodology")}</p>
         <p className="mt-2 whitespace-pre-line text-[12px] leading-5 text-[var(--ink-muted)]">
           {isLeft
-            ? "OpenAlex + Crossref\naccessed 2026-06-24"
+            ? isVi ? "Truy cập qua API mở\nCập nhật 2026-06-24" : "Open API access\nUpdated 2026-06-24"
             : isVi ? "khử trùng · chuẩn hóa\nlập tài liệu · kiểm tra" : "deduplicate · normalize\ndocument · validate"}
         </p>
       </div>
@@ -87,7 +85,8 @@ function ResearchConstellation({ side, locale }: { side: "left" | "right"; local
       </div>
 
       {tags.map((tag, index) => (
-        <span key={tag} className={`absolute whitespace-nowrap rounded-md border border-[var(--line)]/80 bg-white/90 px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[12px] font-medium text-[var(--ink-muted)] shadow-[0_14px_35px_-28px_rgba(13,148,136,0.15)] ${isLeft ? ["left-2 top-[8%]", "left-[30%] top-[48%]", "left-[44%] top-[70%]"][index] : ["right-2 top-[10%]", "right-[30%] top-[50%]", "right-[43%] top-[72%]"][index]}`}>
+        <span key={tag} className={`absolute inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[var(--accent)]/15 bg-white/95 px-3 py-1.5 font-[family-name:var(--font-mono)] text-[12px] font-semibold text-[var(--accent-strong)] shadow-[0_12px_30px_-20px_rgba(13,148,136,0.38)] backdrop-blur-sm ${isLeft ? ["left-2 top-[8%]", "left-[30%] top-[48%]", "left-[44%] top-[70%]"][index] : ["right-2 top-[10%]", "right-[30%] top-[50%]", "right-[43%] top-[72%]"][index]}`}>
+          <span className={`size-1.5 rounded-full ${index === 1 ? "bg-[var(--ink-faint)]" : "bg-[var(--accent)]"}`} />
           {tag}
         </span>
       ))}
@@ -132,6 +131,26 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </section>
 
+        <section data-header-theme="light" aria-labelledby="research-community" className="border-b bg-white/75 py-7 sm:py-9">
+          <Container>
+            <RevealOnScroll>
+              <p id="research-community" className="text-center font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-faint)] sm:text-xs">
+                {copy.socialProof.heading}
+              </p>
+              <div className="mx-auto mt-5 grid max-w-5xl grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-0">
+                {copy.socialProof.institutions.map(([shortName, fullName], index) => (
+                  <div key={fullName} className={`flex min-w-0 items-center justify-center px-2 text-center opacity-55 grayscale ${index > 0 ? "sm:border-l" : ""}`}>
+                    <span>
+                      <span className="block text-sm font-semibold tracking-[0.02em] text-[var(--ink)] sm:text-[15px]">{shortName}</span>
+                      <span className="mt-1 block text-[10px] leading-4 text-[var(--ink-muted)] sm:text-[11px]">{fullName}</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
+          </Container>
+        </section>
+
         <Section headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.problem.eyebrow} title={copy.problem.title} description={copy.problem.description} /></RevealOnScroll>
@@ -146,7 +165,10 @@ export function LandingPage({ locale }: { locale: Locale }) {
             <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
               <RevealOnScroll>
                 <SectionHeader eyebrow={copy.workflow.eyebrow} title={copy.workflow.title} description={copy.workflow.description} />
-                <div className="mt-10 hidden max-w-sm border-y py-5 lg:block">
+                <p className="mt-7 max-w-md rounded-[var(--radius-sm)] border border-[var(--accent)]/20 bg-white/75 px-4 py-3.5 text-sm font-semibold leading-6 text-[var(--accent-strong)] shadow-[var(--shadow-card)]">
+                  {copy.workflow.pricingNote}
+                </p>
+                <div className="mt-7 hidden max-w-sm border-y py-5 lg:block">
                   <p className="font-[family-name:var(--font-mono)] text-[13px] md:text-[14px] font-medium tracking-[0.03em] text-slate-500">{copy.workflow.state}</p>
                   <div className="mt-4 flex items-center justify-between gap-4"><span className="text-[15px] font-semibold text-[var(--ink)]">{copy.workflow.stateValue}</span><span className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[13px] font-semibold rounded-full bg-[var(--accent-soft)] text-[var(--accent-strong)]">{copy.workflow.required}</span></div>
                 </div>
@@ -175,7 +197,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
         <Section id="services" headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.useCases.eyebrow} title={copy.useCases.title} description={copy.useCases.description} /></RevealOnScroll>
-            <div className="mt-14 grid overflow-hidden rounded-[var(--radius-lg)] border bg-[var(--line)] gap-px lg:grid-cols-2">
+            <div className="mt-14 grid overflow-hidden rounded-[var(--radius-lg)] border bg-[var(--line)] gap-px lg:grid-cols-3">
               {copy.useCases.items.map((item, index) => {
                 const Icon = useCaseIcons[index];
                 return (
@@ -259,18 +281,6 @@ export function LandingPage({ locale }: { locale: Locale }) {
                 </div>
               </div>
             </RevealOnScroll>
-          </Container>
-        </Section>
-
-        <Section id="packages" headerTheme="cream" className="theme-cream border-y">
-          <Container>
-            <RevealOnScroll><SectionHeader eyebrow={copy.packages.eyebrow} title={copy.packages.title} description={copy.packages.description} /></RevealOnScroll>
-            <RevealOnScroll>
-              <p className="mt-6 max-w-2xl border-l-2 border-[var(--accent)] pl-4 text-sm leading-6 text-[var(--ink-muted)]">{copy.packages.note}</p>
-            </RevealOnScroll>
-            <div className="mt-14 grid items-stretch gap-4 md:grid-cols-2">
-              {copy.packages.items.map((item, index) => <RevealOnScroll key={item.title} delay={(index % 2) * 0.06}><PackageCard {...item} projectLabel={copy.packages.projectBased} /></RevealOnScroll>)}
-            </div>
           </Container>
         </Section>
 

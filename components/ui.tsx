@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   BookOpenText,
   Braces,
-  Check,
   Database,
   FileJson,
   FileSearch,
@@ -247,45 +246,6 @@ export function StepCard({ number, title, description }: { number: string; title
       </div>
       <h3 className="mt-10 max-w-[14ch] text-lg font-semibold tracking-tight text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">{title}</h3>
       <p className="mt-3 text-[15px] leading-7 text-[var(--ink-muted)]">{description}</p>
-    </article>
-  );
-}
-
-export function PackageCard({
-  title,
-  label,
-  description,
-  items,
-  cta,
-  featured = false,
-  projectLabel = "Project-based",
-}: {
-  title: string;
-  label?: string;
-  description: string;
-  items: string[];
-  cta: string;
-  featured?: boolean;
-  projectLabel?: string;
-}) {
-  return (
-    <article className={`group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl ${featured ? "border-[var(--accent)] bg-[var(--accent-soft)]/20 shadow-[0_8px_30px_-12px_rgba(13,148,136,0.2)]" : "bg-white hover:border-[var(--accent)]/40"}`}>
-      {featured && <div className="absolute inset-y-0 left-0 w-1 bg-[var(--accent)]" />}
-      <div className="flex min-h-7 items-start justify-between gap-3">
-        <p className="font-[family-name:var(--font-mono)] text-[12.5px] lg:text-[13px] font-semibold tracking-[0.03em] uppercase text-slate-500 group-hover:text-[var(--accent)] transition-colors">{projectLabel}</p>
-        {label && <span className={`rounded-full px-3 py-1.5 font-[family-name:var(--font-mono)] text-[13px] lg:text-[14px] font-semibold tracking-[0.03em] ${featured ? "bg-[var(--accent)] text-white shadow-sm" : "bg-[var(--surface-subtle)] text-[var(--accent-strong)]"}`}>{label}</span>}
-      </div>
-      <h3 className="mt-5 text-xl font-semibold tracking-[-0.035em]">{title}</h3>
-      <p className="mt-3 text-[15px] leading-7 text-[var(--ink-muted)] sm:min-h-16">{description}</p>
-      <ul className="my-6 space-y-3 border-t border-[var(--line)] pt-5 text-[15px] text-[var(--ink-muted)]">
-        {items.map((item) => (
-          <li key={item} className="flex items-start gap-3">
-            <Check className="text-[var(--accent)]" size={15} strokeWidth={1.75} />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <Button variant={featured ? "primary" : "secondary"} className="mt-auto w-full">{cta}</Button>
     </article>
   );
 }

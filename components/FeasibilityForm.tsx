@@ -102,17 +102,17 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
     setStatus("success");
   };
 
-  const inputClass = "w-full rounded-[var(--radius-sm)] border border-[var(--line-strong)] bg-white px-4 py-3.5 text-[15px] text-[var(--ink)] placeholder:text-[#6B7A75] transition duration-200 focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 focus:outline-none";
+  const inputClass = "w-full rounded-[var(--radius-sm)] border border-[var(--line-strong)] bg-white px-3.5 py-3 text-[15px] text-[var(--ink)] placeholder:text-[#6B7A75] transition duration-200 focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 focus:outline-none";
   const labelClass = "block text-sm font-semibold text-[var(--ink)]";
-  const fieldClass = "space-y-2";
-  const optionalLabel = <span className="ml-1 font-normal text-[var(--ink-muted)]">({copy.optional})</span>;
+  const fieldClass = "space-y-1.5";
+  const optionalLabel = <span className="ml-2 inline-flex rounded-full bg-[var(--accent-soft)] px-2 py-0.5 align-middle text-[11px] font-semibold text-[var(--accent-strong)]">{copy.optional}</span>;
 
   const fieldError = (name: string) => errors[name] ? <p id={`${name}-error`} className="text-[13px] font-medium text-red-700">{errors[name]}</p> : null;
   const errorProps = (name: string) => ({ "aria-invalid": Boolean(errors[name]), "aria-describedby": errors[name] ? `${name}-error` : undefined });
 
   return (
-    <div className="mx-auto max-w-[900px] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line-strong)] bg-white shadow-[0_24px_70px_-58px_rgba(13,148,136,0.2)]">
-      <div className="p-6 sm:p-8 lg:p-10">
+    <div className="mx-auto max-w-[860px] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line-strong)] bg-white shadow-[0_24px_70px_-58px_rgba(13,148,136,0.2)]">
+      <div className="p-5 sm:p-7 lg:p-8">
         {status === "success" ? (
           <div className="flex min-h-72 flex-col items-center justify-center py-8 text-center" aria-live="polite">
             <span className="flex size-14 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent-strong)]">
@@ -126,7 +126,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
           </div>
         ) : (
           <form onSubmit={handleSubmit} noValidate aria-busy={status === "submitting"}>
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
               <div className={fieldClass}>
                 <label htmlFor="name" className={labelClass}>{copy.name} *</label>
                 <input id="name" name="name" type="text" autoComplete="name" className={inputClass} placeholder={isVi ? "Tên của bạn" : "Your name"} {...errorProps("name")} />
@@ -139,7 +139,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 sm:gap-5">
               <div className={fieldClass}>
                 <label htmlFor="role" className={labelClass}>{copy.role} *</label>
                 <select id="role" name="role" defaultValue="" className={inputClass} {...errorProps("role")}>
@@ -158,24 +158,24 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            <div className={`${fieldClass} mt-6`}>
+            <div className={`${fieldClass} mt-5`}>
               <label htmlFor="topic" className={labelClass}>{copy.topic} *</label>
-              <textarea id="topic" name="topic" rows={3} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Mô tả ngắn luận văn, bài báo hoặc chủ đề nghiên cứu của bạn." : "Briefly describe your thesis, paper, or research topic."} {...errorProps("topic")} />
+              <textarea id="topic" name="topic" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Mô tả ngắn luận văn, bài báo hoặc chủ đề nghiên cứu của bạn." : "Briefly describe your thesis, paper, or research topic."} {...errorProps("topic")} />
               {fieldError("topic")}
             </div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 sm:gap-5">
               <div className={fieldClass}>
                 <label htmlFor="sources" className={labelClass}>{copy.sources}{optionalLabel}</label>
-                <textarea id="sources" name="sources" rows={3} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Website, API, cơ sở dữ liệu, kho lưu trữ hoặc tạp chí..." : "Websites, APIs, databases, repositories, or journals..."} />
+                <textarea id="sources" name="sources" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Website, API, cơ sở dữ liệu, kho lưu trữ hoặc tạp chí..." : "Websites, APIs, databases, repositories, or journals..."} />
               </div>
               <div className={fieldClass}>
                 <label htmlFor="expectedOutput" className={labelClass}>{copy.output}{optionalLabel}</label>
-                <textarea id="expectedOutput" name="expectedOutput" rows={3} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Ví dụ: CSV đã làm sạch, từ điển dữ liệu, trước ngày..." : "For example: cleaned CSV, data dictionary, needed by..."} />
+                <textarea id="expectedOutput" name="expectedOutput" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Ví dụ: CSV đã làm sạch, từ điển dữ liệu, trước ngày..." : "For example: cleaned CSV, data dictionary, needed by..."} />
               </div>
             </div>
 
-            <div className={`${fieldClass} mt-6`}>
+            <div className={`${fieldClass} mt-5`}>
               <label htmlFor="sensitiveData" className={labelClass}>{copy.sensitive} *</label>
               <select id="sensitiveData" name="sensitiveData" defaultValue="" className={inputClass} {...errorProps("sensitiveData")}>
                 <option value="" disabled>{copy.selectSensitive}</option>
@@ -184,7 +184,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
               {fieldError("sensitiveData")}
             </div>
 
-            <div className="mt-7 border-t border-[var(--line)] pt-6">
+            <div className="mt-6 border-t border-[var(--line)] pt-5">
               <p className="mb-4 text-center text-[13px] font-medium text-[var(--ink-muted)]">{copy.responseNote}</p>
               <button type="submit" disabled={status === "submitting"} className="focus-ring group inline-flex min-h-14 w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--accent)] bg-[var(--accent)] px-8 text-base font-semibold text-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-strong)] active:translate-y-px disabled:pointer-events-none disabled:opacity-70">
                 {status === "submitting" ? copy.submitting : copy.submit}
@@ -196,15 +196,15 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
         )}
       </div>
 
-      <div className="border-t border-[var(--line)] bg-[var(--surface-subtle)]/35 px-6 py-7 sm:px-8 sm:py-8 lg:px-10">
+      <div className="border-t border-[var(--line)] bg-[var(--surface-subtle)]/35 px-5 py-6 sm:px-7">
         <div className="flex items-center gap-4">
           <span aria-hidden="true" className="h-px flex-1 bg-[var(--line-strong)]" />
           <span className="text-[13px] font-medium text-[var(--ink-muted)]">{copy.direct}</span>
           <span aria-hidden="true" className="h-px flex-1 bg-[var(--line-strong)]" />
         </div>
-        <div className="mt-7 grid gap-3 md:grid-cols-3">
+        <div className="mt-6 grid gap-3 md:grid-cols-3">
           {contacts.map(({ label, detail, href, icon: Icon, external }) => (
-            <a key={label} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} aria-label={`${copy.openContact}: ${label}`} className="focus-ring group flex min-w-0 items-center gap-3 rounded-[var(--radius-md)] border border-[var(--line-strong)] bg-white p-4 transition duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-[var(--shadow-card)] active:translate-y-px">
+            <a key={label} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} aria-label={`${copy.openContact}: ${label}`} className="focus-ring group flex min-w-0 items-center gap-3 rounded-[var(--radius-md)] border border-[var(--line-strong)] bg-white p-3.5 transition duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-[var(--shadow-card)] active:translate-y-px">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent-soft)] text-[var(--accent-strong)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-white">
                 <Icon aria-hidden="true" size={18} strokeWidth={1.75} />
               </span>
