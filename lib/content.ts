@@ -47,7 +47,6 @@ const en = {
   workflow: {
     eyebrow: "Research workflow",
     title: "Scope first.\nCollect with confidence.",
-    description: "Start with source feasibility, validate a sample, then move to a full research-ready data.",
     state: "Before collection",
     stateValue: "Scope the project before collecting data",
     required: "Required first step",
