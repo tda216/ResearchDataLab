@@ -9,7 +9,7 @@
   --ink-faint: #82908B;
   --line: #DDE7E2;
   --line-strong: #CBD5E1;
-  --accent: #00A78E;
+  --accent: #0a542f;
   --accent-strong: #00796B;
   --accent-bright: #14B8A6;
   --accent-soft: #E6F4F1;
@@ -59,7 +59,7 @@ button {
 }
 
 .theme-hero {
-  background: linear-gradient(180deg, #F0FAF6 0%, #F8FAF8 100%);
+  background: linear-gradient(180deg, #caeabf 0%, #F8FAF8 100%);
 }
 
 .theme-cream {
