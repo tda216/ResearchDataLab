@@ -60,7 +60,7 @@ function ResearchConstellation({ side, locale }: { side: "left" | "right"; local
       : ["Source review complete", "Missing values · 0.8%", "Open license"];
 
   return (
-    <div aria-hidden="true" className={`pointer-events-none absolute bottom-0 z-0 hidden h-[54%] w-[43%] overflow-hidden opacity-60 md:block lg:opacity-75 ${isLeft ? "left-0" : "right-0"}`}>
+    <div aria-hidden="true" className={`pointer-events-none absolute bottom-0 z-0 hidden h-[54%] w-[43%] overflow-hidden opacity-30 md:block lg:opacity-50 ${isLeft ? "left-0" : "right-0"}`}>
       <div className={`absolute bottom-[-4%] h-[84%] w-[82%] border border-[rgba(13,148,136,0.06)] bg-[var(--accent-soft)]/20 ${isLeft ? "-left-14 -rotate-3" : "-right-14 rotate-3"}`} />
       <div className={`absolute top-[43%] h-[31%] w-[31%] border border-[var(--line)]/70 bg-white/30 ${isLeft ? "left-[40%] rotate-6" : "right-[40%] -rotate-6"}`} />
       <svg viewBox="0 0 600 300" preserveAspectRatio="none" className={`absolute inset-0 h-full w-full opacity-75 ${isLeft ? "" : "-scale-x-100"}`}>
@@ -82,7 +82,7 @@ function ResearchConstellation({ side, locale }: { side: "left" | "right"; local
         {Array.from({ length: 30 }, (_, index) => <span key={index} className={`size-[3px] ${index % 4 === 0 ? "bg-[var(--ink-faint)]" : "bg-[var(--accent)]"}`} />)}
       </div>
 
-      <div className={`absolute bottom-[5%] w-44 border border-[var(--line)]/80 bg-white/88 p-3.5 shadow-[0_18px_45px_-32px_rgba(13,148,136,0.15)] backdrop-blur-[2px] lg:w-52 ${isLeft ? "left-5 -rotate-3 lg:left-12" : "right-5 rotate-3 lg:right-12"}`}>
+      <div className={`absolute bottom-[5%] w-44 rounded-xl border border-[var(--line)]/80 bg-white/88 p-3.5 shadow-[0_18px_45px_-32px_rgba(13,148,136,0.15)] backdrop-blur-[2px] lg:w-52 ${isLeft ? "left-5 -rotate-3 lg:left-12" : "right-5 rotate-3 lg:right-12"}`}>
         <p className="text-[13px] font-semibold text-[var(--ink)]">{isLeft ? (isVi ? "Nguồn" : "Source") : (isVi ? "Phương pháp" : "Methodology")}</p>
         <p className="mt-2 whitespace-pre-line text-[12px] leading-5 text-[var(--ink-muted)]">
           {isLeft
@@ -91,7 +91,7 @@ function ResearchConstellation({ side, locale }: { side: "left" | "right"; local
         </p>
       </div>
 
-      <div className={`absolute top-[30%] w-40 border border-[var(--line)]/80 bg-white/88 p-3.5 shadow-[0_18px_45px_-32px_rgba(13,148,136,0.15)] backdrop-blur-[2px] lg:w-48 ${isLeft ? "left-[4%] rotate-2 lg:left-[10%]" : "right-[4%] -rotate-2 lg:right-[10%]"}`}>
+      <div className={`absolute top-[30%] w-40 rounded-xl border border-[var(--line)]/80 bg-white/88 p-3.5 shadow-[0_18px_45px_-32px_rgba(13,148,136,0.15)] backdrop-blur-[2px] lg:w-48 ${isLeft ? "left-[4%] rotate-2 lg:left-[10%]" : "right-[4%] -rotate-2 lg:right-[10%]"}`}>
         <span className="font-[family-name:var(--font-editorial)] text-2xl leading-none text-[var(--accent)]">“</span>
         <p className="mt-1 whitespace-pre-line text-[12px] leading-5 text-[var(--ink-muted)]">
           {isLeft

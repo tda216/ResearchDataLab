@@ -71,11 +71,11 @@ const en = {
     notes: { label: "Access notes", value: "Prefer open, API-accessible, and client-authorized sources" },
     risks: { label: "Risks to avoid", value: "Google Scholar scraping · paywalled full text without authorization · sensitive personal data" },
     output: { label: "Suggested output", value: "cleaned_dataset.csv · data_dictionary.xlsx · methodology_note.pdf" },
-    cta: "Request your feasibility check",
+    cta: "Check data feasibility",
     badges: ["Open / API sources", "Access risks flagged"],
   },
   useCases: {
-    eyebrow: "Data Types We Handle",
+    eyebrow: "Supported research projects",
     title: "Built for real research workflows",
     description: "Common academic data projects we help scope, collect, clean, and document.",
     items: [
