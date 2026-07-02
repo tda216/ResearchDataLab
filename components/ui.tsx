@@ -186,14 +186,18 @@ export function FeatureCard({
   );
 }
 
-const fileIcons = {
-  json: FileJson,
-  csv: Table2,
-  xlsx: FileSpreadsheet,
-  pdf: FileText,
-  py: Braces,
-  md: BookOpenText,
+type FileType = "json" | "csv" | "xlsx" | "pdf" | "py" | "md";
+
+const fileConfig: Record<FileType, { icon: any; color: string; bg: string; border: string; shadow: string; badgeBg: string; badgeText: string }> = {
+  json: { icon: FileJson, color: "text-amber-600", bg: "bg-amber-50", border: "hover:border-amber-500/40", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(217,119,6,0.15)]", badgeBg: "group-hover:bg-amber-100/60", badgeText: "group-hover:text-amber-700" },
+  csv: { icon: Table2, color: "text-emerald-600", bg: "bg-emerald-50", border: "hover:border-emerald-500/40", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(5,150,105,0.15)]", badgeBg: "group-hover:bg-emerald-100/60", badgeText: "group-hover:text-emerald-700" },
+  xlsx: { icon: FileSpreadsheet, color: "text-emerald-600", bg: "bg-emerald-50", border: "hover:border-emerald-500/40", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(5,150,105,0.15)]", badgeBg: "group-hover:bg-emerald-100/60", badgeText: "group-hover:text-emerald-700" },
+  pdf: { icon: FileText, color: "text-rose-600", bg: "bg-rose-50", border: "hover:border-rose-500/40", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(225,29,72,0.15)]", badgeBg: "group-hover:bg-rose-100/60", badgeText: "group-hover:text-rose-700" },
+  py: { icon: Braces, color: "text-blue-600", bg: "bg-blue-50", border: "hover:border-blue-500/40", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]", badgeBg: "group-hover:bg-blue-100/60", badgeText: "group-hover:text-blue-700" },
+  md: { icon: BookOpenText, color: "text-slate-600", bg: "bg-slate-50", border: "hover:border-slate-400/50", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(71,85,105,0.12)]", badgeBg: "group-hover:bg-slate-200/60", badgeText: "group-hover:text-slate-700" },
 };
+
+const defaultFileConfig = { icon: ScrollText, color: "text-[var(--accent-strong)]", bg: "bg-[var(--surface-subtle)]", border: "hover:border-[var(--accent)]/30", shadow: "hover:shadow-[0_16px_32px_-12px_rgba(0,167,142,0.15)]", badgeBg: "group-hover:bg-[var(--accent-soft)]", badgeText: "group-hover:text-[var(--accent-strong)]" };
 
 export function FileCard({
   name,
@@ -206,27 +210,28 @@ export function FileCard({
   fields?: string[];
   size?: "standard" | "wide";
 }) {
-  const ext = name.split(".").pop() as keyof typeof fileIcons;
-  const Icon = fileIcons[ext] ?? ScrollText;
+  const ext = name.split(".").pop() as FileType;
+  const config = fileConfig[ext] ?? defaultFileConfig;
+  const Icon = config.icon;
 
   return (
-    <article className={`group relative min-h-[14rem] flex flex-col justify-between overflow-hidden bg-white p-6 border border-transparent transition-all duration-300 ease-out hover:z-10 hover:-translate-y-1 hover:border-[var(--accent)]/30 hover:shadow-lg ${size === "wide" ? "sm:col-span-2" : ""}`}>
+    <article className={`group relative min-h-[14rem] flex flex-col justify-between overflow-hidden bg-white p-6 border border-transparent transition-all duration-400 ease-out hover:z-10 hover:-translate-y-1.5 ${config.border} ${config.shadow} ${size === "wide" ? "sm:col-span-2" : ""}`}>
       <div>
         <div className="flex items-start justify-between">
-          <span className="flex size-9 items-center justify-center rounded-md border bg-[var(--surface-subtle)] text-[var(--accent-strong)] group-hover:bg-[var(--accent-soft)] transition-colors">
-            <Icon size={19} strokeWidth={1.75} />
+          <span className={`flex size-9 items-center justify-center rounded-md border border-[var(--line-strong)] ${config.color} ${config.bg} shadow-sm transition-colors`}>
+            <Icon size={18} strokeWidth={2.25} />
           </span>
-          <span className="font-[family-name:var(--font-mono)] text-[13px] font-medium uppercase tracking-[0.05em] text-[var(--ink-muted)]">.{ext}</span>
+          <span className="font-[family-name:var(--font-mono)] text-[12.5px] font-bold uppercase tracking-[0.06em] text-[var(--ink-faint)]">.{ext}</span>
         </div>
-        <div className="mt-8">
-          <h3 className="break-all font-[family-name:var(--font-mono)] text-[14px] font-semibold text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">{name}</h3>
-          <p className="mt-2.5 max-w-sm text-[14px] leading-6 text-[var(--ink-muted)]">{description}</p>
+        <div className="mt-7">
+          <h3 className="break-all font-[family-name:var(--font-mono)] text-[14.5px] font-bold tracking-tight text-[var(--ink)] transition-colors group-hover:text-[var(--ink)]">{name}</h3>
+          <p className="mt-2.5 max-w-sm text-[14px] leading-[1.65] text-[var(--ink-muted)]">{description}</p>
         </div>
       </div>
       {fields && (
         <div className="mt-6 flex flex-wrap gap-2 border-t border-[var(--line)] pt-4">
           {fields.map(field => (
-            <span key={field} className="inline-flex rounded-full bg-[var(--surface-subtle)] px-3 py-1 text-[12.5px] lg:text-[13px] font-medium tracking-[0.03em] text-slate-500 group-hover:bg-[var(--accent-soft)] group-hover:text-[var(--accent-strong)] transition-colors">
+            <span key={field} className={`inline-flex rounded-full bg-[var(--surface-subtle)] px-3 py-1 text-[12.5px] lg:text-[13px] font-semibold tracking-[0.02em] text-[var(--ink-faint)] transition-colors ${config.badgeBg} ${config.badgeText}`}>
               {field}
             </span>
           ))}
@@ -236,16 +241,24 @@ export function FileCard({
   );
 }
 
-export function StepCard({ number, title, description }: { number: string; title: string; description: string }) {
+export function StepCard({ number, title, description, isLast = false }: { number: string; title: string; description: string; isLast?: boolean }) {
   return (
-    <article className="group relative pt-6 md:min-h-[16rem]">
-      <div className="relative z-10 flex items-center gap-3">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--canvas)] border border-[var(--line-strong)] font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-[0.03em] text-slate-500 group-hover:border-[var(--accent)] group-hover:text-[var(--accent-strong)] group-hover:bg-[var(--accent-soft)] transition-colors">
-          {number}
-        </span>
+    <article className="group relative flex flex-1 flex-col gap-6 md:gap-8 pt-6 sm:pt-8 md:px-4 md:pt-0">
+      {/* Connecting line (Desktop) */}
+      {!isLast && (
+        <div className="absolute left-[calc(50%+2rem)] right-[calc(-50%+2rem)] top-[1.125rem] hidden h-[2px] bg-[var(--line-strong)] md:block" />
+      )}
+      
+      {/* Node Badge */}
+      <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-[var(--line-strong)] bg-white shadow-sm transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-[var(--accent)] group-hover:shadow-[0_8px_16px_-6px_rgba(0,167,142,0.3)] md:mx-auto">
+        <span className="font-[family-name:var(--font-mono)] text-[13px] font-bold tracking-[0.05em] text-[var(--ink-muted)] transition-colors group-hover:text-[var(--accent-strong)]">{number}</span>
       </div>
-      <h3 className="mt-10 max-w-[14ch] text-lg font-semibold tracking-tight text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">{title}</h3>
-      <p className="mt-3 text-[15px] leading-7 text-[var(--ink-muted)]">{description}</p>
+
+      {/* Content */}
+      <div className="md:text-center px-6 md:px-0 pb-6 md:pb-0">
+        <h3 className="text-[16px] font-bold tracking-tight text-[var(--ink)] transition-colors group-hover:text-[var(--accent)]">{title}</h3>
+        <p className="mt-3 text-[14.5px] leading-[1.65] text-[var(--ink-muted)]">{description}</p>
+      </div>
     </article>
   );
 }

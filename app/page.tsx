@@ -9,11 +9,15 @@ import {
   FileSearch,
   Files,
   Fingerprint,
+  Lock,
   Mail,
   MessageCircle,
   Network,
   ScanSearch,
+  Server,
+  ShieldCheck,
   Sparkles,
+  FileKey2,
 } from "lucide-react";
 import { Header, RevealOnScroll } from "@/components/client";
 import { BrandLogo } from "@/components/BrandLogo";
@@ -33,6 +37,7 @@ import { getContent, type Locale } from "@/lib/content";
 
 const problemIcons = [Files, ScanSearch, Sparkles, BookOpenCheck];
 const useCaseIcons = [FileSearch, Network, DatabaseZap];
+const safeguardIcons = [ShieldCheck, Lock, Server, FileKey2, Check];
 const institutionLogos: Record<string, string> = {
   HUST: "/logos/hust.png",
   LEEDS: "/logos/leeds.png",
@@ -187,19 +192,20 @@ export function LandingPage({ locale }: { locale: Locale }) {
 
         <Section id="process" headerTheme="mint" className="theme-mint border-y">
           <Container>
-            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+            <div className="flex flex-col gap-12">
               <RevealOnScroll>
                 <SectionHeader eyebrow={copy.workflow.eyebrow} title={copy.workflow.title} description={copy.workflow.description} />
-                <p className="mt-7 max-w-md rounded-[var(--radius-sm)] border border-[var(--accent)]/20 bg-white/75 px-4 py-3.5 text-sm font-semibold leading-6 text-[var(--accent-strong)] shadow-[var(--shadow-card)]">
-                  {copy.workflow.pricingNote}
-                </p>
-                <div className="mt-7 hidden max-w-sm border-y py-5 lg:block">
-                  <p className="font-[family-name:var(--font-mono)] text-[13px] md:text-[14px] font-medium tracking-[0.03em] text-slate-500">{copy.workflow.state}</p>
-                  <div className="mt-4 flex items-center justify-between gap-4"><span className="text-[15px] font-semibold text-[var(--ink)]">{copy.workflow.stateValue}</span><span className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[13px] font-semibold rounded-full bg-[var(--accent-soft)] text-[var(--accent-strong)]">{copy.workflow.required}</span></div>
-                </div>
               </RevealOnScroll>
-              <div className="micro-grid grid gap-x-8 gap-y-10 rounded-[var(--radius-lg)] border p-6 sm:grid-cols-2 sm:p-9">
-                {copy.workflow.steps.map(([number, title, description], index) => <RevealOnScroll key={number} delay={index * 0.06}><StepCard number={number} title={title} description={description} /></RevealOnScroll>)}
+              
+              <div className="relative mt-4 flex flex-col md:flex-row">
+                {/* Mobile vertical connecting line */}
+                <div className="absolute left-[1.1875rem] top-6 bottom-6 w-[2px] bg-[var(--line-strong)] md:hidden" />
+                
+                {copy.workflow.steps.map(([number, title, description], index, arr) => (
+                  <RevealOnScroll key={number} delay={index * 0.08} className="flex-1">
+                    <StepCard number={number} title={title} description={description} isLast={index === arr.length - 1} />
+                  </RevealOnScroll>
+                ))}
               </div>
             </div>
           </Container>
@@ -297,7 +303,17 @@ export function LandingPage({ locale }: { locale: Locale }) {
                       <span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold text-[var(--accent-strong)] bg-[var(--accent-soft)] px-3 py-1.5 rounded-full">{copy.ethics.reviewed}</span>
                     </div>
                     <ul className="divide-y divide-[var(--line)]">
-                      {copy.ethics.items.map((item, index) => <li key={item} className="grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 py-4 text-[15px] leading-6 text-[var(--ink-muted)]"><span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-[0.03em] text-[var(--accent-strong)]">0{index + 1}</span><span>{item}</span><Check size={16} className="text-[var(--accent)]" strokeWidth={2} /></li>)}
+                      {copy.ethics.items.map((item, index) => {
+                        const Icon = safeguardIcons[index] || Check;
+                        return (
+                          <li key={item} className="group grid grid-cols-[3rem_1fr] items-center gap-4 py-4 sm:py-5 transition-colors hover:bg-slate-50/50">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--line-strong)] bg-white shadow-sm transition-colors group-hover:border-[var(--accent)]/30 group-hover:bg-[var(--accent-soft)]">
+                              <Icon size={18} className="text-[var(--ink-muted)] group-hover:text-[var(--accent-strong)] transition-colors" strokeWidth={2} />
+                            </div>
+                            <span className="text-[14.5px] font-medium leading-6 text-[var(--ink)]">{item}</span>
+                          </li>
+                        );
+                      })}
                     </ul>
                     <div className="mt-6 grid grid-cols-1 divide-y divide-[var(--line)] border-y border-[var(--line)] sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:py-5">
                       {copy.ethics.logs.map(([value, label]) => <div key={label} className="py-4 sm:px-5 sm:py-0 sm:first:pl-0"><p className="text-[15px] font-semibold text-[var(--ink)]">{value}</p><p className="mt-1 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-[0.03em] text-slate-500 uppercase">{label}</p></div>)}

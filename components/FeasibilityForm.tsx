@@ -80,7 +80,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
     const form = event.currentTarget;
     const data = new FormData(form);
     const nextErrors: FormErrors = {};
-    const requiredFields = ["name", "email", "role", "topic", "dataNeeded", "sensitiveData"];
+    const requiredFields = ["name", "email", "topic", "dataNeeded"];
 
     for (const field of requiredFields) {
       if (!String(data.get(field) ?? "").trim()) nextErrors[field] = copy.required;
@@ -105,7 +105,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
   const inputClass = "w-full rounded-[var(--radius-sm)] border border-[var(--line-strong)] bg-white px-3.5 py-3 text-[15px] text-[var(--ink)] placeholder:text-[#6B7A75] transition duration-200 focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 focus:outline-none";
   const labelClass = "block text-sm font-semibold text-[var(--ink)]";
   const fieldClass = "space-y-1.5";
-  const optionalLabel = <span className="ml-2 inline-flex rounded-full bg-[var(--accent-soft)] px-2 py-0.5 align-middle text-[11px] font-semibold text-[var(--accent-strong)]">{copy.optional}</span>;
+  const optionalLabel = <span className="ml-2 inline-flex align-middle text-[12px] font-normal italic text-slate-400">{copy.optional}</span>;
 
   const fieldError = (name: string) => errors[name] ? <p id={`${name}-error`} className="text-[13px] font-medium text-red-700">{errors[name]}</p> : null;
   const errorProps = (name: string) => ({ "aria-invalid": Boolean(errors[name]), "aria-describedby": errors[name] ? `${name}-error` : undefined });
@@ -126,7 +126,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
           </div>
         ) : (
           <form onSubmit={handleSubmit} noValidate aria-busy={status === "submitting"}>
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+            <div className="grid gap-5 sm:grid-cols-2">
               <div className={fieldClass}>
                 <label htmlFor="name" className={labelClass}>{copy.name} *</label>
                 <input id="name" name="name" type="text" autoComplete="name" className={inputClass} placeholder={isVi ? "Tên của bạn" : "Your name"} {...errorProps("name")} />
@@ -137,18 +137,8 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
                 <input id="email" name="email" type="email" autoComplete="email" className={inputClass} placeholder="you@example.com" {...errorProps("email")} />
                 {fieldError("email")}
               </div>
-            </div>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 sm:gap-5">
-              <div className={fieldClass}>
-                <label htmlFor="role" className={labelClass}>{copy.role} *</label>
-                <select id="role" name="role" defaultValue="" className={inputClass} {...errorProps("role")}>
-                  <option value="" disabled>{copy.selectRole}</option>
-                  {roleOptions.map((option) => <option key={option}>{option}</option>)}
-                </select>
-                {fieldError("role")}
-              </div>
-              <div className={fieldClass}>
+              <div className="sm:col-span-2 space-y-1.5">
                 <label htmlFor="dataNeeded" className={labelClass}>{copy.data} *</label>
                 <select id="dataNeeded" name="dataNeeded" defaultValue="" className={inputClass} {...errorProps("dataNeeded")}>
                   <option value="" disabled>{copy.selectData}</option>
@@ -156,39 +146,20 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
                 </select>
                 {fieldError("dataNeeded")}
               </div>
-            </div>
 
-            <div className={`${fieldClass} mt-5`}>
-              <label htmlFor="topic" className={labelClass}>{copy.topic} *</label>
-              <textarea id="topic" name="topic" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Mô tả ngắn luận văn, bài báo hoặc chủ đề nghiên cứu của bạn." : "Briefly describe your thesis, paper, or research topic."} {...errorProps("topic")} />
-              {fieldError("topic")}
-            </div>
-
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 sm:gap-5">
-              <div className={fieldClass}>
-                <label htmlFor="sources" className={labelClass}>{copy.sources}{optionalLabel}</label>
-                <textarea id="sources" name="sources" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Website, API, cơ sở dữ liệu, kho lưu trữ hoặc tạp chí..." : "Websites, APIs, databases, repositories, or journals..."} />
-              </div>
-              <div className={fieldClass}>
-                <label htmlFor="expectedOutput" className={labelClass}>{copy.output}{optionalLabel}</label>
-                <textarea id="expectedOutput" name="expectedOutput" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Ví dụ: CSV đã làm sạch, từ điển dữ liệu, trước ngày..." : "For example: cleaned CSV, data dictionary, needed by..."} />
+              <div className="sm:col-span-2 space-y-1.5">
+                <label htmlFor="topic" className={labelClass}>{copy.topic} *</label>
+                <textarea id="topic" name="topic" rows={2} className={`${inputClass} resize-y leading-6`} placeholder={isVi ? "Mô tả ngắn luận văn, bài báo hoặc chủ đề nghiên cứu của bạn." : "Briefly describe your thesis, paper, or research topic."} {...errorProps("topic")} />
+                {fieldError("topic")}
               </div>
             </div>
-
-            <div className={`${fieldClass} mt-5`}>
-              <label htmlFor="sensitiveData" className={labelClass}>{copy.sensitive} *</label>
-              <select id="sensitiveData" name="sensitiveData" defaultValue="" className={inputClass} {...errorProps("sensitiveData")}>
-                <option value="" disabled>{copy.selectSensitive}</option>
-                {sensitiveOptions.map((option) => <option key={option}>{option}</option>)}
-              </select>
-              {fieldError("sensitiveData")}
-            </div>
-
-            <div className="mt-6 border-t border-[var(--line)] pt-5">
-              <p className="mb-4 text-center text-[13px] font-medium text-[var(--ink-muted)]">{copy.responseNote}</p>
-              <button type="submit" disabled={status === "submitting"} className="focus-ring group inline-flex min-h-14 w-full items-center justify-center rounded-[var(--radius-sm)] border border-[var(--accent)] bg-[var(--accent)] px-8 text-base font-semibold text-white shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--accent-strong)] active:translate-y-px disabled:pointer-events-none disabled:opacity-70">
-                {status === "submitting" ? copy.submitting : copy.submit}
-                {status !== "submitting" && <ArrowRight aria-hidden="true" size={18} strokeWidth={1.75} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />}
+            <div className="mt-8 border-t border-[var(--line)] pt-6">
+              <p className="mb-5 text-center text-[13.5px] font-medium text-[var(--ink-muted)]">{copy.responseNote}</p>
+              <button type="submit" disabled={status === "submitting"} className="focus-ring group relative flex min-h-16 w-full items-center justify-center overflow-hidden rounded-[var(--radius-sm)] border border-[var(--accent-strong)] bg-gradient-to-b from-[var(--accent)] to-[var(--accent-strong)] px-8 text-base font-bold text-white shadow-[0_8px_20px_-8px_rgba(0,167,142,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(0,167,142,0.6)] active:translate-y-px disabled:pointer-events-none disabled:opacity-70">
+                <span className="relative z-10 flex items-center">
+                  {status === "submitting" ? copy.submitting : copy.submit}
+                  {status !== "submitting" && <ArrowRight aria-hidden="true" size={18} strokeWidth={2.5} className="ml-2 transition-transform duration-300 group-hover:translate-x-1.5" />}
+                </span>
               </button>
               <p className="mt-3 text-[13px] leading-5 text-[var(--ink-muted)]">{copy.privacy}</p>
             </div>
