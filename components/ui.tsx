@@ -91,10 +91,10 @@ export function SectionHeader({
   return (
     <div className={`max-w-[46rem] ${className}`}>
       {eyebrow && <p className="font-[family-name:var(--font-mono)] text-[13px] md:text-[15px] font-semibold tracking-[0.04em] text-[var(--accent-strong)] uppercase mb-6">{eyebrow}</p>}
-      <h2 className="text-balance font-[family-name:var(--font-editorial)] text-[clamp(2.25rem,4vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-[var(--ink)]">
+      <h2 className="text-balance whitespace-pre-line font-[family-name:var(--font-editorial)] text-[clamp(2.25rem,4vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-[var(--ink)]">
         {title}
       </h2>
-      <p className="mt-5 max-w-[60ch] text-base leading-7 text-[var(--ink-muted)] sm:text-[1.0625rem]">{description}</p>
+      <p className="mt-5 max-w-none text-base leading-7 text-[var(--ink-muted)] sm:text-[1.0625rem]">{description}</p>
     </div>
   );
 }

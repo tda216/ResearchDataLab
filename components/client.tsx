@@ -94,14 +94,22 @@ export function Header({ locale }: { locale: Locale }) {
             <Link key={href} href={href} className="focus-ring rounded-sm text-sm font-medium text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)] xl:text-[15px]">{label}</Link>
           ))}
         </nav>
-        <div className="hidden lg:block lg:justify-self-end">
+        <div className="hidden lg:flex items-center gap-5 lg:justify-self-end">
+          <Link href={locale === "vi" ? "/" : "/vi"} className={`text-sm font-bold tracking-wide transition-colors ${isDark ? "text-white/80 hover:text-white" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>
+            {locale === "vi" ? "EN" : "VI"}
+          </Link>
           <a href="#feasibility-form" className={`focus-ring inline-flex min-h-10 items-center justify-center rounded-[var(--radius-sm)] border px-5 text-sm font-semibold transition duration-300 ease-out hover:-translate-y-0.5 active:translate-y-px ${isDark ? "border-white/60 bg-[var(--accent-soft)] text-[var(--deep-teal)] hover:bg-white" : "border-[var(--accent)] bg-[var(--accent)] text-white shadow-[0_2px_8px_rgba(0,121,107,0.18)] hover:bg-[var(--accent-strong)]"}`}>
             {copy.cta}
           </a>
         </div>
-        <button type="button" className={`focus-ring flex size-10 items-center justify-center rounded-[var(--radius-sm)] border transition-colors lg:hidden ${isDark ? "border-white/20 bg-white/10 text-white" : "border-[var(--line-strong)] bg-white/85 text-[var(--ink)]"}`} aria-label={open ? copy.close : copy.open} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-          {open ? <X size={19} strokeWidth={1.75} /> : <Menu size={19} strokeWidth={1.75} />}
-        </button>
+        <div className="flex items-center gap-4 lg:hidden">
+          <Link href={locale === "vi" ? "/" : "/vi"} className={`text-[13px] font-bold tracking-wide transition-colors ${isDark ? "text-white/80 hover:text-white" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>
+            {locale === "vi" ? "EN" : "VI"}
+          </Link>
+          <button type="button" className={`focus-ring flex size-10 items-center justify-center rounded-[var(--radius-sm)] border transition-colors ${isDark ? "border-white/20 bg-white/10 text-white" : "border-[var(--line-strong)] bg-white/85 text-[var(--ink)]"}`} aria-label={open ? copy.close : copy.open} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+            {open ? <X size={19} strokeWidth={1.75} /> : <Menu size={19} strokeWidth={1.75} />}
+          </button>
+        </div>
       </div>
       <AnimatePresence>
         {open && (

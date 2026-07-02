@@ -194,7 +194,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           <Container>
             <div className="flex flex-col gap-12">
               <RevealOnScroll>
-                <SectionHeader eyebrow={copy.workflow.eyebrow} title={copy.workflow.title} description={copy.workflow.description} />
+                <SectionHeader eyebrow={copy.workflow.eyebrow} title={copy.workflow.title} description={copy.workflow.description} className="max-w-4xl" />
               </RevealOnScroll>
               
               <div className="relative mt-4 flex flex-col md:flex-row">

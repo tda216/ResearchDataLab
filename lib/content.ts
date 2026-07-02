@@ -46,8 +46,8 @@ const en = {
   },
   workflow: {
     eyebrow: "Research workflow",
-    title: "Scope first. Collect with confidence.",
-    description: "Start with source feasibility, validate a small sample, then move to a full research-ready dataset.",
+    title: "Scope first.\nCollect with confidence.",
+    description: "Start with source feasibility, validate a sample, then move to a full research-ready data.",
     state: "Before collection",
     stateValue: "Scope the project before collecting data",
     required: "Required first step",
@@ -167,7 +167,7 @@ const vi: typeof en = {
   },
   workflow: {
     eyebrow: "Quy trình nghiên cứu",
-    title: "Cấu hình một lần. Thu thập có cơ sở.",
+    title: "Cấu hình một lần.\nThu thập có cơ sở.",
     description: "Bắt đầu bằng đánh giá khả thi, kiểm chứng trên một mẫu nhỏ, sau đó mới triển khai bộ dữ liệu nghiên cứu đầy đủ.",
     state: "Trước khi thu thập",
     stateValue: "Chốt phạm vi dự án trước khi thu thập dữ liệu",
