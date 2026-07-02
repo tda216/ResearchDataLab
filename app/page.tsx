@@ -12,7 +12,7 @@ import {
   Sparkles,
   TableProperties,
 } from "lucide-react";
-import { FAQItem, Header, RevealOnScroll } from "@/components/client";
+import { Header, RevealOnScroll } from "@/components/client";
 import { BrandLogo } from "@/components/BrandLogo";
 import { FeasibilityForm } from "@/components/FeasibilityForm";
 import {
@@ -132,23 +132,6 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </section>
 
-        <section data-header-theme="cream" className="border-b bg-[var(--cream)] py-9 sm:py-11">
-          <Container>
-            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.4fr] lg:items-end lg:gap-12">
-              <div>
-                <p className="font-[family-name:var(--font-mono)] text-[13px] font-semibold uppercase tracking-[0.04em] text-[var(--accent-strong)]">{copy.sourcesBand.eyebrow}</p>
-                <p className="mt-2 max-w-xl text-base font-semibold leading-6 text-[var(--ink)]">{copy.sourcesBand.title}</p>
-              </div>
-              <div>
-                <ul className="flex flex-wrap gap-2.5" aria-label={copy.sourcesBand.eyebrow}>
-                  {copy.sourcesBand.sources.map((source) => <li key={source} className="rounded-md border border-[var(--line-strong)] bg-white/70 px-3 py-2 text-sm font-semibold text-[var(--ink-muted)]">{source}</li>)}
-                </ul>
-                <p className="mt-3 text-[13px] leading-5 text-[var(--ink-muted)]">{copy.sourcesBand.note}</p>
-              </div>
-            </div>
-          </Container>
-        </section>
-
         <Section headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.problem.eyebrow} title={copy.problem.title} description={copy.problem.description} /></RevealOnScroll>
@@ -239,23 +222,6 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section headerTheme="cream" className="theme-cream border-b">
-          <Container>
-            <RevealOnScroll><SectionHeader eyebrow={copy.standards.eyebrow} title={copy.standards.title} description={copy.standards.description} /></RevealOnScroll>
-            <div className="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
-              {copy.standards.items.map(([number, title, description], index) => (
-                <RevealOnScroll key={number} delay={index * 0.05}>
-                  <article className="h-full bg-white p-6 sm:p-7">
-                    <span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold text-[var(--accent-strong)]">{number}</span>
-                    <h3 className="mt-7 text-lg font-semibold tracking-[-0.025em] text-[var(--ink)]">{title}</h3>
-                    <p className="mt-3 text-[15px] leading-7 text-[var(--ink-muted)]">{description}</p>
-                  </article>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </Container>
-        </Section>
-
         <Section id="ethics" headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll>
@@ -308,17 +274,6 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="faq" headerTheme="light" className="bg-white">
-          <Container className="max-w-3xl">
-            <RevealOnScroll>
-              <SectionHeader className="mx-auto flex flex-col items-center text-center" eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
-            </RevealOnScroll>
-            <RevealOnScroll className="mt-16">
-              <div>{copy.faq.items.map(([question, answer], index) => <FAQItem key={question} index={`0${index + 1}`} question={question} answer={answer} />)}</div>
-            </RevealOnScroll>
-          </Container>
-        </Section>
-
         <Section id="feasibility-form" headerTheme="mint" className="theme-form">
           <Container>
             <RevealOnScroll>
@@ -339,8 +294,9 @@ export function LandingPage({ locale }: { locale: Locale }) {
               <p className="mt-4 text-sm text-[var(--ink-muted)]">{copy.footer.tagline}</p>
             </div>
             <div className="flex flex-col items-start gap-2 text-sm font-medium">
-              <a href="mailto:hello@researchdatalab.xyz" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">hello@researchdatalab.xyz</a>
-              <a href="https://zalo.me/84961636906" target="_blank" rel="noreferrer" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">Zalo · +84 961636906</a>
+              <a href="https://facebook.com/trhndan" target="_blank" rel="noreferrer" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">Facebook · fb.com/trhndan</a>
+              <a href="https://zalo.me/84961636906" target="_blank" rel="noreferrer" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">Zalo · +84 961 636 906</a>
+              <a href="mailto:trinhducan21@gmail.com" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">trinhducan21@gmail.com</a>
             </div>
             <p className="max-w-sm text-sm leading-6 text-[var(--ink-muted)] lg:justify-self-end lg:text-right">{copy.footer.rights}</p>
           </div>

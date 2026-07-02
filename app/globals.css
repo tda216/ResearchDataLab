@@ -28,7 +28,7 @@
   --radius-lg: 1.375rem;
   --shadow-card: 0 18px 50px -38px rgba(0, 121, 107, 0.18);
   --shadow-panel: 0 32px 72px -46px rgba(0, 121, 107, 0.24);
-  --section-space: clamp(4rem, 6.5vw, 7rem);
+  --section-space: clamp(3.75rem, 6vw, 6.5rem);
 }
 
 * {
@@ -58,7 +58,10 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-.theme-hero,
+.theme-hero {
+  background: linear-gradient(180deg, #F0FAF6 0%, #F8FAF8 100%);
+}
+
 .theme-cream {
   background: var(--cream);
 }

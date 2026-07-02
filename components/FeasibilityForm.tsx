@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, Mail, Phone } from "lucide-react";
+import { ArrowRight, Check, Mail, MessageCircle, Phone } from "lucide-react";
 import type { Locale } from "@/lib/content";
 
 type FormStatus = "idle" | "submitting" | "success";
@@ -70,8 +70,9 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
     : ["Literature review dataset", "Bibliometric dataset", "Public web dataset", "Existing dataset cleaning", "Other / not sure yet"];
   const sensitiveOptions = isVi ? ["Không", "Chưa chắc", "Có"] : ["No", "Not sure", "Yes"];
   const contacts = [
-    { label: "Email", detail: "hello@researchdatalab.xyz", href: "mailto:hello@researchdatalab.xyz", icon: Mail, external: false },
-    { label: "Zalo", detail: "+84 961636906", href: "https://zalo.me/84961636906", icon: Phone, external: true },
+    { label: "Facebook", detail: "fb.com/trhndan", href: "https://facebook.com/trhndan", icon: MessageCircle, external: true },
+    { label: "Zalo", detail: "+84 961 636 906", href: "https://zalo.me/84961636906", icon: Phone, external: true },
+    { label: "Email", detail: "trinhducan21@gmail.com", href: "mailto:trinhducan21@gmail.com", icon: Mail, external: false },
   ];
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -201,7 +202,7 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
           <span className="text-[13px] font-medium text-[var(--ink-muted)]">{copy.direct}</span>
           <span aria-hidden="true" className="h-px flex-1 bg-[var(--line-strong)]" />
         </div>
-        <div className="mt-7 grid gap-3 sm:grid-cols-2">
+        <div className="mt-7 grid gap-3 md:grid-cols-3">
           {contacts.map(({ label, detail, href, icon: Icon, external }) => (
             <a key={label} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} aria-label={`${copy.openContact}: ${label}`} className="focus-ring group flex min-w-0 items-center gap-3 rounded-[var(--radius-md)] border border-[var(--line-strong)] bg-white p-4 transition duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:shadow-[var(--shadow-card)] active:translate-y-px">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent-soft)] text-[var(--accent-strong)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-white">

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 import { getContent, type Locale } from "@/lib/content";
@@ -89,9 +89,9 @@ export function Header({ locale }: { locale: Locale }) {
         <a href="#top" className="focus-ring flex items-center rounded-md lg:justify-self-start" onClick={() => setOpen(false)}>
           <BrandLogo variant="full" size="sm" />
         </a>
-        <nav className="hidden items-center gap-8 lg:flex" aria-label={copy.primaryLabel}>
+        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex" aria-label={copy.primaryLabel}>
           {copy.links.map(([label, href]) => (
-            <Link key={href} href={href} className="focus-ring rounded-sm text-[15px] font-medium text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)]">{label}</Link>
+            <Link key={href} href={href} className="focus-ring rounded-sm text-sm font-medium text-[var(--ink-muted)] transition-colors hover:text-[var(--ink)] xl:text-[15px]">{label}</Link>
           ))}
         </nav>
         <div className="hidden lg:block lg:justify-self-end">
@@ -131,30 +131,5 @@ export function FloatingVisual({ children }: { children: ReactNode }) {
     >
       {children}
     </motion.div>
-  );
-}
-
-export function FAQItem({ index, question, answer }: { index: string; question: string; answer: string }) {
-  const [open, setOpen] = useState(index === "01" || index === "02");
-  return (
-    <div className={`border-t border-[var(--line-strong)] transition-colors last:border-b ${open ? "bg-white" : ""}`}>
-      <button
-        type="button"
-        className="focus-ring grid w-full grid-cols-[2rem_1fr_auto] items-center gap-3 py-6 pr-1 text-left sm:grid-cols-[3rem_1fr_auto] sm:gap-5"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <span className="font-[family-name:var(--font-mono)] text-[13px] font-medium text-[var(--accent-strong)]">{index}</span>
-        <span className="text-base font-semibold tracking-[-0.02em] sm:text-lg">{question}</span>
-        <ChevronDown className={`shrink-0 text-[var(--ink-faint)] transition-transform duration-300 ${open ? "rotate-180 text-[var(--accent)]" : ""}`} size={18} strokeWidth={1.75} />
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden">
-            <p className="max-w-3xl pb-7 pl-11 pr-8 text-[15px] leading-7 text-[var(--ink-muted)] sm:pl-[4.25rem] sm:pr-10">{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
   );
 }

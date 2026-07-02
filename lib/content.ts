@@ -5,6 +5,7 @@ const en = {
     links: [
       ["Services", "#services"],
       ["Process", "#process"],
+      ["Sample review", "#sample-review"],
       ["Deliverables", "#deliverables"],
       ["Ethics", "#ethics"],
       ["Packages", "#packages"],
@@ -24,12 +25,6 @@ const en = {
     description: "Clean, documented, reproducible datasets for literature reviews, bibliometric studies, public web research, and thesis projects.",
     primary: "Check data feasibility",
     secondary: "View sample review",
-  },
-  sourcesBand: {
-    eyebrow: "Common open and permitted sources",
-    title: "Built around research-ready, documented source workflows",
-    sources: ["OpenAlex", "Crossref", "PubMed", "arXiv", "DataCite", "DOAJ", "CORE", "Public Web"],
-    note: "Source availability depends on access rules, permissions, and project scope.",
   },
   problem: {
     eyebrow: "Research data problem",
@@ -99,17 +94,6 @@ const en = {
       ["README.md", "Project overview, file descriptions, and usage notes."],
     ],
   },
-  standards: {
-    eyebrow: "How we’re different",
-    title: "Research-ready data is more than extraction",
-    description: "Every project is scoped around access, documentation, and analysis needs.",
-    items: [
-      ["01", "Feasibility before collection", "Check source access, fields, risks, and limitations before committing to a full dataset."],
-      ["02", "Documented by default", "Receive source notes, field definitions, and a clear record of what was collected."],
-      ["03", "Ethics-aware source access", "Use public, permitted, open, API-accessible, or client-authorized sources."],
-      ["04", "Reproducible handoff", "Add scripts, notebooks, or methodology notes when the research workflow requires them."],
-    ],
-  },
   ethics: {
     accessLabel: "Access protocol",
     protocol: "Source access review",
@@ -136,20 +120,6 @@ const en = {
       { title: "Dataset Cleaning", description: "For researchers who already have messy files and need them cleaned, standardized, and documented.", items: ["CSV/Excel cleaning", "Deduplication", "Field normalization", "Data dictionary", "Clean export"], cta: "Clean existing dataset" },
     ],
   },
-  faq: {
-    eyebrow: "FAQ",
-    title: "Practical details before you start",
-    description: "Clear boundaries help determine whether a source and workflow fit your research project.",
-    checks: "Feasibility review checks",
-    checkItems: ["Source access", "Field coverage", "Ethics risk", "Expected limitations"],
-    items: [
-      ["Is this only web scraping?", "No. We focus on research-ready datasets. Depending on the project, the work may include source feasibility, API extraction, public web collection, data cleaning, documentation, and reproducible scripts."],
-      ["Can you collect Google Scholar data?", "We avoid restricted or high-risk sources when access, terms, or ethics are unclear. We prefer permitted, open, API-accessible, or client-authorized sources."],
-      ["Do you collect full-text papers?", "Only when the source is open, permitted, or the client has proper authorization. We do not bypass paywalls."],
-      ["What files do I receive?", "Depending on scope, deliverables may include raw data, cleaned dataset, data dictionary, source log, methodology note, README, and reproducible script or notebook."],
-      ["Can you clean data I already have?", "Yes. We can clean, deduplicate, normalize, and document existing CSV, Excel, JSON, or exported research files."],
-    ],
-  },
   finalCta: {
     eyebrow: "Free feasibility check",
     title: "Tell us what data you need",
@@ -164,7 +134,7 @@ const en = {
 
 const vi: typeof en = {
   nav: {
-    links: [["Quy trình", "#process"], ["Ứng dụng", "#services"], ["Bàn giao", "#deliverables"], ["Đạo đức", "#ethics"], ["Gói dịch vụ", "#packages"]],
+    links: [["Dịch vụ", "#services"], ["Quy trình", "#process"], ["Mẫu đánh giá", "#sample-review"], ["Bàn giao", "#deliverables"], ["Đạo đức", "#ethics"], ["Gói dịch vụ", "#packages"]],
     descriptor: "hệ thống dữ liệu nghiên cứu",
     cta: "Kiểm tra tính khả thi miễn phí",
     open: "Mở menu điều hướng",
@@ -180,12 +150,6 @@ const vi: typeof en = {
     description: "Dữ liệu sạch, có tài liệu và có thể tái lập cho luận văn và dự án nghiên cứu.",
     primary: "Kiểm tra tính khả thi",
     secondary: "Xem mẫu đánh giá",
-  },
-  sourcesBand: {
-    eyebrow: "Nguồn mở và nguồn được phép thường dùng",
-    title: "Quy trình nguồn được lập tài liệu và chuẩn bị cho nghiên cứu",
-    sources: ["OpenAlex", "Crossref", "PubMed", "arXiv", "DataCite", "DOAJ", "CORE", "Web công khai"],
-    note: "Khả năng sử dụng nguồn phụ thuộc vào quy tắc truy cập, quyền hạn và phạm vi dự án.",
   },
   problem: {
     eyebrow: "Khoảng trống dữ liệu nghiên cứu",
@@ -255,17 +219,6 @@ const vi: typeof en = {
       ["README.md", "Tổng quan dự án, mô tả tệp và hướng dẫn sử dụng."],
     ],
   },
-  standards: {
-    eyebrow: "Điểm khác biệt",
-    title: "Dữ liệu sẵn sàng cho nghiên cứu không chỉ là trích xuất",
-    description: "Mỗi dự án được xác định theo quyền truy cập, yêu cầu tài liệu và nhu cầu phân tích.",
-    items: [
-      ["01", "Đánh giá trước khi thu thập", "Kiểm tra nguồn, trường dữ liệu, rủi ro và giới hạn trước khi triển khai toàn bộ."],
-      ["02", "Mặc định có tài liệu", "Nhận ghi chú nguồn, định nghĩa trường và hồ sơ rõ ràng về dữ liệu đã thu thập."],
-      ["03", "Truy cập nguồn có cân nhắc đạo đức", "Sử dụng nguồn công khai, được phép, nguồn mở, có API hoặc được khách hàng ủy quyền."],
-      ["04", "Bàn giao có thể tái lập", "Kèm mã, notebook hoặc ghi chú phương pháp khi quy trình nghiên cứu yêu cầu."],
-    ],
-  },
   ethics: {
     accessLabel: "Giao thức truy cập",
     protocol: "Đánh giá quyền truy cập nguồn",
@@ -290,20 +243,6 @@ const vi: typeof en = {
       { title: "Bộ dữ liệu mẫu", description: "Một mẫu nhỏ để kiểm tra cấu trúc, chất lượng và mức độ hữu ích trước khi thu thập đầy đủ.", items: ["50–200 bản ghi mẫu", "Schema ban đầu", "Ghi chú nguồn", "Nhận xét chất lượng"], cta: "Yêu cầu dữ liệu mẫu" },
       { title: "Bộ dữ liệu nghiên cứu đầy đủ", label: "Đầy đủ nhất", description: "Bộ dữ liệu sẵn sàng cho nghiên cứu với làm sạch, tài liệu và mã tái lập tùy chọn.", items: ["Dữ liệu thô khi phù hợp", "Dữ liệu đã làm sạch", "Từ điển dữ liệu", "Nhật ký nguồn", "Ghi chú phương pháp", "Mã Python/notebook tùy chọn"], cta: "Trao đổi dự án", featured: true },
       { title: "Chỉ làm sạch dữ liệu", description: "Dành cho nhà nghiên cứu đã có tệp dữ liệu lộn xộn và cần làm sạch, chuẩn hóa, lập tài liệu.", items: ["Làm sạch CSV/Excel", "Khử trùng lặp", "Chuẩn hóa trường", "Từ điển dữ liệu", "Tệp xuất sạch"], cta: "Làm sạch dữ liệu của tôi" },
-    ],
-  },
-  faq: {
-    eyebrow: "Câu hỏi thường gặp",
-    title: "Thông tin thực tế trước khi bắt đầu",
-    description: "Ranh giới rõ ràng giúp xác định nguồn và quy trình có phù hợp với dự án nghiên cứu hay không.",
-    checks: "Nội dung đánh giá khả thi",
-    checkItems: ["Quyền truy cập nguồn", "Độ phủ trường dữ liệu", "Rủi ro đạo đức", "Các giới hạn dự kiến"],
-    items: [
-      ["Dịch vụ này chỉ là web scraping?", "Không. Chúng tôi tập trung vào dữ liệu sẵn sàng cho nghiên cứu, có thể bao gồm đánh giá nguồn, trích xuất API, thu thập web công khai, làm sạch, lập tài liệu và mã tái lập."],
-      ["Có thể thu thập dữ liệu Google Scholar không?", "Chúng tôi tránh các nguồn hạn chế hoặc rủi ro khi có vấn đề về truy cập, điều khoản hoặc đạo đức. Chúng tôi ưu tiên nguồn được phép, nguồn mở, có API hoặc được khách hàng ủy quyền."],
-      ["Có thu thập toàn văn bài báo không?", "Chỉ khi nguồn mở, được phép hoặc khách hàng có ủy quyền phù hợp. Chúng tôi không vượt tường phí."],
-      ["Tôi sẽ nhận những tệp nào?", "Tùy phạm vi, bàn giao có thể gồm dữ liệu thô, dữ liệu sạch, từ điển dữ liệu, nhật ký nguồn, ghi chú phương pháp, README và mã hoặc notebook tái lập."],
-      ["Có thể làm sạch dữ liệu tôi đã có không?", "Có. Chúng tôi có thể làm sạch, khử trùng, chuẩn hóa và lập tài liệu cho tệp CSV, Excel, JSON hoặc dữ liệu xuất sẵn."],
     ],
   },
   finalCta: {
