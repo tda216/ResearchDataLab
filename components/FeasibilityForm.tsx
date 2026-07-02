@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, Mail, MessageCircle, Phone } from "lucide-react";
+import { ArrowRight, Check, ExternalLink, Mail, MessageCircle, Phone } from "lucide-react";
 import type { Locale } from "@/lib/content";
 
 type FormStatus = "idle" | "submitting" | "success";
@@ -70,9 +70,9 @@ export function FeasibilityForm({ locale }: { locale: Locale }) {
     : ["Literature review dataset", "Bibliometric dataset", "Public web dataset", "Existing dataset cleaning", "Other / not sure yet"];
   const sensitiveOptions = isVi ? ["Không", "Chưa chắc", "Có"] : ["No", "Not sure", "Yes"];
   const contacts = [
-    { label: "Facebook", detail: "fb.com/trhndan", href: "https://facebook.com/trhndan", icon: MessageCircle, external: true },
-    { label: "Zalo", detail: "+84 961 636 906", href: "https://zalo.me/84961636906", icon: Phone, external: true },
-    { label: "Email", detail: "trinhducan21@gmail.com", href: "mailto:trinhducan21@gmail.com", icon: Mail, external: false },
+    { label: "Facebook", detail: "fb.com/trhndan", href: "https://fb.com/trhndan", icon: ExternalLink, external: true },
+    { label: "Zalo", detail: "+84 961 636 906", href: "https://zalo.me/84961636906", icon: MessageCircle, external: true },
+    { label: "Email", detail: "tda@researchdatalab.xyz", href: "mailto:tda@researchdatalab.xyz", icon: Mail, external: false },
   ];
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

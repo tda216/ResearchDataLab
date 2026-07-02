@@ -1,12 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   BookOpenCheck,
   Check,
   DatabaseZap,
+  ExternalLink,
   FileCheck2,
   FileSearch,
   Files,
   Fingerprint,
+  Mail,
+  MessageCircle,
   Network,
   ScanSearch,
   Sparkles,
@@ -29,6 +33,13 @@ import { getContent, type Locale } from "@/lib/content";
 
 const problemIcons = [Files, ScanSearch, Sparkles, BookOpenCheck];
 const useCaseIcons = [FileSearch, Network, DatabaseZap];
+const institutionLogos: Record<string, string> = {
+  HUST: "/logos/hust.png",
+  LEEDS: "/logos/leeds.png",
+  LBU: "/logos/lbu.png",
+  CHESTER: "/logos/chester.png",
+};
+
 
 const networkNodes = [[3, 56], [10, 16], [21, 62], [34, 30], [45, 74], [57, 42], [70, 80], [83, 55], [96, 88]];
 
@@ -131,21 +142,35 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </section>
 
-        <section data-header-theme="light" aria-labelledby="research-community" className="border-b bg-white/75 py-7 sm:py-9">
+        <section data-header-theme="light" aria-labelledby="research-community" className="border-b bg-white/75 py-8 sm:py-10">
           <Container>
             <RevealOnScroll>
-              <p id="research-community" className="text-center font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-faint)] sm:text-xs">
+              <p id="research-community" className="text-center text-[13px] font-semibold tracking-[0.04em] text-[var(--ink-faint)] sm:text-[14px]">
                 {copy.socialProof.heading}
               </p>
-              <div className="mx-auto mt-5 grid max-w-5xl grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-0">
-                {copy.socialProof.institutions.map(([shortName, fullName], index) => (
-                  <div key={fullName} className={`flex min-w-0 items-center justify-center px-2 text-center opacity-55 grayscale ${index > 0 ? "sm:border-l" : ""}`}>
-                    <span>
-                      <span className="block text-sm font-semibold tracking-[0.02em] text-[var(--ink)] sm:text-[15px]">{shortName}</span>
-                      <span className="mt-1 block text-[10px] leading-4 text-[var(--ink-muted)] sm:text-[11px]">{fullName}</span>
-                    </span>
-                  </div>
-                ))}
+              <div className="mx-auto mt-8 flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-6 sm:gap-x-16">
+                {copy.socialProof.institutions.map(([shortName, fullName]) => {
+                  const logoSrc = institutionLogos[shortName];
+                  return (
+                    <div key={fullName} className="group flex min-h-12 items-center justify-center" title={fullName}>
+                      {logoSrc ? (
+                        <div className="relative flex h-8 sm:h-9 w-auto items-center justify-center">
+                          <Image
+                            src={logoSrc}
+                            alt={fullName}
+                            width={200}
+                            height={40}
+                            className="h-full w-auto object-contain grayscale opacity-45 mix-blend-multiply transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.05]"
+                          />
+                        </div>
+                      ) : (
+                        <span className="font-[family-name:var(--font-mono)] text-[15px] font-bold tracking-[0.06em] text-[var(--ink-faint)] uppercase transition-colors duration-300 group-hover:text-[var(--accent-strong)] sm:text-base">
+                          {shortName}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </RevealOnScroll>
           </Container>
@@ -294,21 +319,30 @@ export function LandingPage({ locale }: { locale: Locale }) {
         </Section>
       </main>
 
-      <footer data-header-theme="light" className="border-t border-[var(--line-strong)] bg-white py-10 sm:py-12">
+      <footer data-header-theme="light" className="border-t border-[var(--line-strong)] bg-white py-12 sm:py-14">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.8fr_1.1fr] lg:items-end lg:gap-10">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_auto_1fr] lg:items-start lg:gap-16 xl:gap-20">
             <div>
               <Link href="#top" className="focus-ring inline-flex items-center rounded-md">
                 <BrandLogo variant="full" size="md" />
               </Link>
-              <p className="mt-4 text-sm text-[var(--ink-muted)]">{copy.footer.tagline}</p>
+              <p className="mt-4 max-w-xs text-sm leading-6 text-[var(--ink-muted)]">{copy.footer.tagline}</p>
             </div>
-            <div className="flex flex-col items-start gap-2 text-sm font-medium">
-              <a href="https://facebook.com/trhndan" target="_blank" rel="noreferrer" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">Facebook · fb.com/trhndan</a>
-              <a href="https://zalo.me/84961636906" target="_blank" rel="noreferrer" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">Zalo · +84 961 636 906</a>
-              <a href="mailto:trinhducan21@gmail.com" className="focus-ring rounded-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--accent-strong)]">trinhducan21@gmail.com</a>
-            </div>
-            <p className="max-w-sm text-sm leading-6 text-[var(--ink-muted)] lg:justify-self-end lg:text-right">{copy.footer.rights}</p>
+            <nav aria-label={copy.nav.footerLabel} className="flex flex-col items-start gap-3.5">
+              <a href="https://fb.com/trhndan" target="_blank" rel="noreferrer" className="focus-ring group inline-flex items-center gap-2.5 rounded-sm text-sm font-medium text-[var(--ink-muted)] transition-colors duration-200 hover:text-[var(--accent-strong)]">
+                <ExternalLink aria-hidden="true" size={16} strokeWidth={1.75} className="shrink-0 text-[var(--ink-faint)] transition-colors duration-200 group-hover:text-[var(--accent)]" />
+                <span>Facebook</span>
+              </a>
+              <a href="https://zalo.me/84961636906" target="_blank" rel="noreferrer" className="focus-ring group inline-flex items-center gap-2.5 rounded-sm text-sm font-medium text-[var(--ink-muted)] transition-colors duration-200 hover:text-[var(--accent-strong)]">
+                <MessageCircle aria-hidden="true" size={16} strokeWidth={1.75} className="shrink-0 text-[var(--ink-faint)] transition-colors duration-200 group-hover:text-[var(--accent)]" />
+                <span>Zalo</span>
+              </a>
+              <a href="mailto:tda@researchdatalab.xyz" className="focus-ring group inline-flex items-center gap-2.5 rounded-sm text-sm font-medium text-[var(--ink-muted)] transition-colors duration-200 hover:text-[var(--accent-strong)]">
+                <Mail aria-hidden="true" size={16} strokeWidth={1.75} className="shrink-0 text-[var(--ink-faint)] transition-colors duration-200 group-hover:text-[var(--accent)]" />
+                <span>tda@researchdatalab.xyz</span>
+              </a>
+            </nav>
+            <p className="text-sm leading-6 text-[var(--ink-faint)] lg:self-end lg:justify-self-end lg:text-right">{copy.footer.rights}</p>
           </div>
         </Container>
       </footer>
