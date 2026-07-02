@@ -111,11 +111,11 @@ export function LandingPage({ locale }: { locale: Locale }) {
     <div lang={locale}>
       <Header locale={locale} />
       <main id="content">
-        <section id="top" aria-labelledby="hero-title" className="relative isolate flex min-h-[calc(100dvh-4.5rem)] scroll-mt-[4.5rem] overflow-hidden border-b bg-white">
+        <section id="top" data-header-theme="transparent" aria-labelledby="hero-title" className="theme-hero relative isolate flex min-h-[100dvh] scroll-mt-[4.5rem] overflow-hidden border-b">
           <ResearchConstellation side="left" locale={locale} />
           <ResearchConstellation side="right" locale={locale} />
           <MobileResearchLine />
-          <Container className="relative z-10 flex items-center justify-center pt-10 pb-24 sm:pt-14 sm:pb-28 lg:pb-32">
+          <Container className="relative z-10 flex items-center justify-center pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pb-32">
             <RevealOnScroll className="mx-auto w-full text-center">
               <h1 id="hero-title" className="text-balance mx-auto max-w-[74rem] font-[family-name:var(--font-editorial)] text-[clamp(2.6rem,11vw,5.4rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[var(--ink)] sm:text-[clamp(3.4rem,7vw,5.4rem)] sm:leading-[0.94]">
                 <span className="block">{copy.hero.titleLead}</span>
@@ -124,14 +124,32 @@ export function LandingPage({ locale }: { locale: Locale }) {
               <p className="mx-auto mt-7 max-w-[44rem] text-base leading-7 text-[var(--ink-muted)] sm:mt-8 sm:text-lg sm:leading-8">
                 {copy.hero.description}
               </p>
-              <div className="mt-8 flex justify-center sm:mt-9">
-                <Button className="min-h-14 rounded-[var(--radius-sm)] px-8 text-base shadow-[var(--shadow-card)]">{copy.hero.primary}</Button>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row">
+                <Button className="min-h-14 w-full rounded-[var(--radius-sm)] px-8 text-base shadow-[var(--shadow-card)] sm:w-auto">{copy.hero.primary}</Button>
+                <Button href="#sample-review" variant="secondary" className="min-h-14 w-full px-8 text-base sm:w-auto">{copy.hero.secondary}</Button>
               </div>
             </RevealOnScroll>
           </Container>
         </section>
 
-        <Section>
+        <section data-header-theme="cream" className="border-b bg-[var(--cream)] py-9 sm:py-11">
+          <Container>
+            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.4fr] lg:items-end lg:gap-12">
+              <div>
+                <p className="font-[family-name:var(--font-mono)] text-[13px] font-semibold uppercase tracking-[0.04em] text-[var(--accent-strong)]">{copy.sourcesBand.eyebrow}</p>
+                <p className="mt-2 max-w-xl text-base font-semibold leading-6 text-[var(--ink)]">{copy.sourcesBand.title}</p>
+              </div>
+              <div>
+                <ul className="flex flex-wrap gap-2.5" aria-label={copy.sourcesBand.eyebrow}>
+                  {copy.sourcesBand.sources.map((source) => <li key={source} className="rounded-md border border-[var(--line-strong)] bg-white/70 px-3 py-2 text-sm font-semibold text-[var(--ink-muted)]">{source}</li>)}
+                </ul>
+                <p className="mt-3 text-[13px] leading-5 text-[var(--ink-muted)]">{copy.sourcesBand.note}</p>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <Section headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.problem.eyebrow} title={copy.problem.title} description={copy.problem.description} /></RevealOnScroll>
             <div className="mt-16 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -140,7 +158,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="process" className="border-y bg-white">
+        <Section id="process" headerTheme="mint" className="theme-mint border-y">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
               <RevealOnScroll>
@@ -157,7 +175,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="sample-report" className="border-y bg-[var(--accent-soft)]/35 pb-20">
+        <Section id="sample-review" headerTheme="dark" className="theme-dark border-y border-white/10 pb-20 [--ink:#F8FAF8] [--ink-muted:#D2E2DD] [--accent-strong:#99F6E4]">
           <Container>
             <RevealOnScroll>
               <SectionHeader className="mx-auto flex flex-col items-center text-center" eyebrow={copy.sampleReport.eyebrow} title={copy.sampleReport.title} description={copy.sampleReport.description} />
@@ -165,13 +183,13 @@ export function LandingPage({ locale }: { locale: Locale }) {
             <RevealOnScroll delay={0.1}>
               <FeasibilityReportCard content={copy.sampleReport} />
               <div className="mt-8 flex justify-center">
-                <Button>{copy.sampleReport.cta}</Button>
+                <Button variant="light">{copy.sampleReport.cta}</Button>
               </div>
             </RevealOnScroll>
           </Container>
         </Section>
 
-        <Section id="services">
+        <Section id="services" headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.useCases.eyebrow} title={copy.useCases.title} description={copy.useCases.description} /></RevealOnScroll>
             <div className="mt-14 grid overflow-hidden rounded-[var(--radius-lg)] border bg-[var(--line)] gap-px lg:grid-cols-2">
@@ -187,6 +205,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
                       <h3 className="mt-8 text-2xl font-semibold tracking-[-0.035em] group-hover:text-[var(--accent)] transition-colors">{item.title}</h3>
                       <p className="mt-3 max-w-xl text-[15px] leading-7 text-[var(--ink-muted)]">{item.description}</p>
                       <div className="mt-6 flex flex-wrap gap-x-2 gap-y-2 border-t pt-5">{item.fields.map((field) => <span key={field} className="inline-flex rounded-full bg-[var(--surface-subtle)] px-3 py-1.5 text-[13px] font-medium text-[var(--ink-muted)] transition-colors group-hover:bg-[var(--accent-soft)] group-hover:text-[var(--accent-strong)]">{field}</span>)}</div>
+                      <p className="mt-5 text-[13px] leading-5 text-[var(--ink-muted)]"><span className="font-semibold text-[var(--ink)]">{locale === "vi" ? "Phù hợp cho:" : "Best for:"}</span> {item.bestFor}</p>
                     </article>
                   </RevealOnScroll>
                 );
@@ -195,12 +214,18 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="deliverables" className="border-y bg-[var(--surface-subtle)]">
+        <Section id="deliverables" headerTheme="blue" className="theme-blue border-y">
           <Container>
             <RevealOnScroll>
               <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
                 <SectionHeader eyebrow={copy.deliverables.eyebrow} title={copy.deliverables.title} description={copy.deliverables.description} />
                 <Badge className="w-fit bg-[var(--surface-subtle)] border-[var(--line-strong)] px-4 py-2 rounded-full"><FileCheck2 size={16} className="text-[var(--accent)] mr-2" /> <span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-[0.03em] text-[var(--accent-strong)] uppercase">{copy.deliverables.badge}</span></Badge>
+              </div>
+            </RevealOnScroll>
+            <RevealOnScroll>
+              <div className="mt-8 flex flex-col gap-2 border-y border-[var(--line-strong)] py-4 sm:flex-row sm:items-center sm:justify-between">
+                <span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold uppercase tracking-[0.04em] text-[var(--accent-strong)]">{copy.deliverables.packageLabel}</span>
+                <span className="text-sm font-medium text-[var(--ink-muted)]">{copy.deliverables.packageSummary}</span>
               </div>
             </RevealOnScroll>
             <div className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
@@ -211,19 +236,27 @@ export function LandingPage({ locale }: { locale: Locale }) {
               ))}
             </div>
 
-            <RevealOnScroll className="mt-10 border-y border-[var(--line-strong)] py-5">
-              <ul className="flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold text-[var(--ink-muted)]">
-                {copy.standards.summaryItems.map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <Check aria-hidden="true" size={15} strokeWidth={2} className="text-[var(--accent)]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </RevealOnScroll>
           </Container>
         </Section>
-        <Section id="ethics">
+
+        <Section headerTheme="cream" className="theme-cream border-b">
+          <Container>
+            <RevealOnScroll><SectionHeader eyebrow={copy.standards.eyebrow} title={copy.standards.title} description={copy.standards.description} /></RevealOnScroll>
+            <div className="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
+              {copy.standards.items.map(([number, title, description], index) => (
+                <RevealOnScroll key={number} delay={index * 0.05}>
+                  <article className="h-full bg-white p-6 sm:p-7">
+                    <span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold text-[var(--accent-strong)]">{number}</span>
+                    <h3 className="mt-7 text-lg font-semibold tracking-[-0.025em] text-[var(--ink)]">{title}</h3>
+                    <p className="mt-3 text-[15px] leading-7 text-[var(--ink-muted)]">{description}</p>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </Container>
+        </Section>
+
+        <Section id="ethics" headerTheme="light" className="bg-white">
           <Container>
             <RevealOnScroll>
               <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line-strong)] bg-white">
@@ -263,7 +296,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="packages" className="border-y bg-white">
+        <Section id="packages" headerTheme="cream" className="theme-cream border-y">
           <Container>
             <RevealOnScroll><SectionHeader eyebrow={copy.packages.eyebrow} title={copy.packages.title} description={copy.packages.description} /></RevealOnScroll>
             <RevealOnScroll>
@@ -275,7 +308,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="faq" className="bg-[var(--surface-subtle)]/55">
+        <Section id="faq" headerTheme="light" className="bg-white">
           <Container className="max-w-3xl">
             <RevealOnScroll>
               <SectionHeader className="mx-auto flex flex-col items-center text-center" eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
@@ -286,7 +319,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
           </Container>
         </Section>
 
-        <Section id="feasibility-form" className="bg-[var(--canvas)]">
+        <Section id="feasibility-form" headerTheme="mint" className="theme-form">
           <Container>
             <RevealOnScroll>
               <SectionHeader className="mx-auto flex flex-col items-center text-center" eyebrow={copy.finalCta.eyebrow} title={copy.finalCta.title} description={copy.finalCta.description} />
@@ -296,7 +329,7 @@ export function LandingPage({ locale }: { locale: Locale }) {
         </Section>
       </main>
 
-      <footer className="border-t border-[var(--line-strong)] bg-white py-10 sm:py-12">
+      <footer data-header-theme="light" className="border-t border-[var(--line-strong)] bg-white py-10 sm:py-12">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.8fr_1.1fr] lg:items-end lg:gap-10">
             <div>

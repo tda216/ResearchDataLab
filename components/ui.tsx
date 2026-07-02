@@ -25,13 +25,15 @@ export function Section({
   children,
   id,
   className = "",
+  headerTheme,
 }: {
   children: ReactNode;
   id?: string;
   className?: string;
+  headerTheme?: "light" | "cream" | "mint" | "dark" | "blue";
 }) {
   return (
-    <section id={id} className={`scroll-mt-24 py-[var(--section-space)] ${className}`}>
+    <section id={id} data-header-theme={headerTheme} className={`scroll-mt-24 py-[var(--section-space)] ${className}`}>
       {children}
     </section>
   );
@@ -102,6 +104,7 @@ type ReportField = { label: string; value: string };
 type FeasibilityReportContent = {
   reportLabel: string;
   statusLabel: string;
+  badges: string[];
   topic: ReportField;
   sources: ReportField;
   fields: ReportField;
@@ -121,9 +124,9 @@ export function FeasibilityReportCard({ content }: { content: FeasibilityReportC
   ];
 
   return (
-    <div className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-[var(--radius-lg)] border border-[var(--accent)]/30 bg-white shadow-[0_34px_80px_-50px_rgba(13,148,136,0.28)] transition-shadow duration-500 hover:shadow-[0_38px_90px_-50px_rgba(13,148,136,0.34)] sm:mt-14">
+    <div className="relative mx-auto mt-12 max-w-5xl overflow-hidden rounded-[var(--radius-lg)] border border-white/20 bg-white shadow-[0_36px_90px_-48px_rgba(0,0,0,0.34)] [--ink:#1F2937] [--ink-muted:#64748B] [--accent:#00A78E] [--accent-strong:#00796B] sm:mt-14">
       <div className="technical-grid absolute inset-0 opacity-[0.15]" />
-      <div className="relative bg-[var(--surface-subtle)]/50 border-b border-[var(--line)] px-6 py-4 flex items-center justify-between">
+      <div className="relative flex flex-col items-start gap-3 border-b border-[var(--line)] bg-[var(--surface-subtle)]/50 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <FileSearch size={16} className="text-[var(--accent)]" />
           <span className="font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-[0.03em] text-slate-500 uppercase">
@@ -134,7 +137,13 @@ export function FeasibilityReportCard({ content }: { content: FeasibilityReportC
           {content.statusLabel}
         </Badge>
       </div>
-      <div className="relative divide-y divide-[var(--line)] p-6 sm:p-10">
+      <div className="relative p-6 sm:p-10">
+        <div className="mb-5 flex flex-wrap gap-2 border-b border-[var(--line)] pb-5">
+          {content.badges.map((badge) => (
+            <span key={badge} className="rounded-md bg-[var(--accent-soft)] px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[12px] font-semibold text-[var(--accent-strong)]">{badge}</span>
+          ))}
+        </div>
+        <div className="divide-y divide-[var(--line)]">
         {rows.map((row, index) => (
           <div key={row.label} className="grid sm:grid-cols-[1fr_2.5fr] gap-2 sm:gap-6 py-4 first:pt-0 last:pb-0 group">
             <div className="font-[family-name:var(--font-mono)] text-[12.5px] lg:text-[13px] font-medium uppercase tracking-[0.03em] text-slate-500 group-hover:text-[var(--accent)] transition-colors mt-0.5">
@@ -145,6 +154,7 @@ export function FeasibilityReportCard({ content }: { content: FeasibilityReportC
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

@@ -23,6 +23,13 @@ const en = {
     titleAccent: "for thesis and academic research",
     description: "Clean, documented, reproducible datasets for literature reviews, bibliometric studies, public web research, and thesis projects.",
     primary: "Check data feasibility",
+    secondary: "View sample review",
+  },
+  sourcesBand: {
+    eyebrow: "Common open and permitted sources",
+    title: "Built around research-ready, documented source workflows",
+    sources: ["OpenAlex", "Crossref", "PubMed", "arXiv", "DataCite", "DOAJ", "CORE", "Public Web"],
+    note: "Source availability depends on access rules, permissions, and project scope.",
   },
   problem: {
     eyebrow: "Research data problem",
@@ -51,7 +58,7 @@ const en = {
   },
   sampleReport: {
     reportLabel: "Feasibility report",
-    statusLabel: "Sample review",
+    statusLabel: "Reviewed before collection",
     eyebrow: "Sample review",
     title: "A feasibility check before collection begins",
     description: "Before collecting data, we map available sources, expected fields, access risks, and recommended deliverables.",
@@ -62,16 +69,17 @@ const en = {
     risks: { label: "Risks to avoid", value: "Google Scholar scraping · paywalled full text without authorization · sensitive personal data" },
     output: { label: "Suggested output", value: "cleaned_dataset.csv · data_dictionary.xlsx · methodology_note.pdf" },
     cta: "Request your feasibility check",
+    badges: ["Open / API sources", "Access risks flagged"],
   },
   useCases: {
     eyebrow: "Applications",
     title: "Built for real research workflows",
     description: "Common academic data projects we help scope, collect, clean, and document.",
     items: [
-      { label: "Literature review", title: "Literature Review Dataset", description: "Collect paper metadata such as title, authors, DOI, abstract, year, journal, keywords, and source links.", fields: ["DOI", "abstract", "year", "keywords"] },
-      { label: "Bibliometric analysis", title: "Bibliometric Dataset", description: "Prepare publication data for trend analysis, citation mapping, co-author networks, institutions, and topic exploration.", fields: ["citations", "authors", "affiliations", "topics"] },
-      { label: "Public web research", title: "Public Web Dataset", description: "Collect structured records from public job postings, policy pages, university programs, listings, or news metadata.", fields: ["source URL", "category", "date", "record ID"] },
-      { label: "Dataset preparation", title: "Data Cleaning for Researchers", description: "Clean and standardize existing CSV, Excel, JSON, or exported research files for analysis and reporting.", fields: ["deduplicate", "normalize", "validate", "document"] },
+      { label: "Literature review", title: "Literature Review Dataset", description: "Collect paper metadata such as title, authors, DOI, abstract, year, journal, keywords, and source links.", fields: ["DOI", "abstract", "authors", "year", "journal"], bestFor: "SLR, scoping review, thesis background" },
+      { label: "Bibliometric analysis", title: "Bibliometric Dataset", description: "Prepare publication data for trend analysis, citation mapping, co-author networks, institutions, and topic exploration.", fields: ["citations", "authors", "affiliations", "topics"], bestFor: "trends, networks, publication mapping" },
+      { label: "Public web research", title: "Public Web Dataset", description: "Collect structured records from public job postings, policy pages, university programs, listings, or news metadata.", fields: ["URL", "category", "date", "record ID"], bestFor: "policy, jobs, education, public listings" },
+      { label: "Dataset preparation", title: "Dataset Cleaning", description: "Clean and standardize existing CSV, Excel, JSON, or exported research files for analysis and reporting.", fields: ["deduplicate", "normalize", "validate", "document"], bestFor: "messy CSV and Excel exports" },
     ],
   },
   deliverables: {
@@ -79,6 +87,8 @@ const en = {
     title: "Research-ready deliverables",
     description: "Every project is delivered with structured files, documentation, and source notes so the dataset is easier to inspect, analyze, and explain.",
     badge: "Included in delivery",
+    packageLabel: "Delivery package",
+    packageSummary: "Raw files · Cleaned dataset · Documentation · Reproducible workflow",
     items: [
       ["raw_data.json", "Original collected records where applicable."],
       ["cleaned_dataset.csv", "Analysis-ready structured dataset."],
@@ -90,7 +100,15 @@ const en = {
     ],
   },
   standards: {
-    summaryItems: ["Research-first workflow", "Documentation included", "Ethics-aware", "Analysis-ready", "Reproducible"],
+    eyebrow: "How we’re different",
+    title: "Research-ready data is more than extraction",
+    description: "Every project is scoped around access, documentation, and analysis needs.",
+    items: [
+      ["01", "Feasibility before collection", "Check source access, fields, risks, and limitations before committing to a full dataset."],
+      ["02", "Documented by default", "Receive source notes, field definitions, and a clear record of what was collected."],
+      ["03", "Ethics-aware source access", "Use public, permitted, open, API-accessible, or client-authorized sources."],
+      ["04", "Reproducible handoff", "Add scripts, notebooks, or methodology notes when the research workflow requires them."],
+    ],
   },
   ethics: {
     accessLabel: "Access protocol",
@@ -161,6 +179,13 @@ const vi: typeof en = {
     titleAccent: "cho luận văn và nghiên cứu học thuật",
     description: "Dữ liệu sạch, có tài liệu và có thể tái lập cho luận văn và dự án nghiên cứu.",
     primary: "Kiểm tra tính khả thi",
+    secondary: "Xem mẫu đánh giá",
+  },
+  sourcesBand: {
+    eyebrow: "Nguồn mở và nguồn được phép thường dùng",
+    title: "Quy trình nguồn được lập tài liệu và chuẩn bị cho nghiên cứu",
+    sources: ["OpenAlex", "Crossref", "PubMed", "arXiv", "DataCite", "DOAJ", "CORE", "Web công khai"],
+    note: "Khả năng sử dụng nguồn phụ thuộc vào quy tắc truy cập, quyền hạn và phạm vi dự án.",
   },
   problem: {
     eyebrow: "Khoảng trống dữ liệu nghiên cứu",
@@ -189,7 +214,7 @@ const vi: typeof en = {
   },
   sampleReport: {
     reportLabel: "Báo cáo khả thi",
-    statusLabel: "Mẫu đánh giá",
+    statusLabel: "Đánh giá trước khi thu thập",
     eyebrow: "Mẫu đánh giá",
     title: "Kiểm tra tính khả thi trước khi thu thập",
     description: "Trước khi thu thập dữ liệu, chúng tôi lập bản đồ các nguồn có sẵn, các trường dự kiến, rủi ro truy cập và đề xuất đầu ra.",
@@ -200,16 +225,17 @@ const vi: typeof en = {
     risks: { label: "Rủi ro cần tránh", value: "Cào dữ liệu Google Scholar · tải toàn văn bài báo có bản quyền trái phép · dữ liệu cá nhân nhạy cảm" },
     output: { label: "Đầu ra đề xuất", value: "cleaned_dataset.csv · data_dictionary.xlsx · methodology_note.pdf" },
     cta: "Yêu cầu đánh giá khả thi",
+    badges: ["Nguồn mở / API", "Đã ghi nhận rủi ro"],
   },
   useCases: {
     eyebrow: "Ứng dụng",
     title: "Được thiết kế cho quy trình nghiên cứu thực tế",
     description: "Các dạng dự án dữ liệu học thuật phổ biến mà chúng tôi hỗ trợ, được xác định theo câu hỏi phân tích của nghiên cứu.",
     items: [
-      { label: "Tổng quan tài liệu", title: "Dữ liệu tổng quan tài liệu", description: "Thu thập siêu dữ liệu bài báo như tiêu đề, tác giả, DOI, tóm tắt, năm, tạp chí, từ khóa và liên kết nguồn.", fields: ["DOI", "tóm tắt", "năm", "từ khóa"] },
-      { label: "Phân tích trắc lượng", title: "Dữ liệu trắc lượng thư mục", description: "Chuẩn bị dữ liệu công bố cho phân tích xu hướng, bản đồ trích dẫn, mạng lưới đồng tác giả, tổ chức và chủ đề.", fields: ["trích dẫn", "tác giả", "đơn vị", "chủ đề"] },
-      { label: "Nghiên cứu web công khai", title: "Dữ liệu web công khai", description: "Thu thập bản ghi có cấu trúc từ tin tuyển dụng, trang chính sách, chương trình đại học, danh mục công khai hoặc siêu dữ liệu tin tức.", fields: ["URL nguồn", "phân loại", "ngày", "mã bản ghi"] },
-      { label: "Chuẩn bị dữ liệu", title: "Làm sạch dữ liệu nghiên cứu", description: "Làm sạch và chuẩn hóa tệp CSV, Excel, JSON hoặc dữ liệu xuất sẵn để phục vụ phân tích và báo cáo.", fields: ["khử trùng", "chuẩn hóa", "kiểm tra", "lập tài liệu"] },
+      { label: "Tổng quan tài liệu", title: "Dữ liệu tổng quan tài liệu", description: "Thu thập siêu dữ liệu bài báo như tiêu đề, tác giả, DOI, tóm tắt, năm, tạp chí, từ khóa và liên kết nguồn.", fields: ["DOI", "tóm tắt", "tác giả", "năm", "tạp chí"], bestFor: "SLR, scoping review, nền tảng luận văn" },
+      { label: "Phân tích trắc lượng", title: "Dữ liệu trắc lượng thư mục", description: "Chuẩn bị dữ liệu công bố cho phân tích xu hướng, bản đồ trích dẫn, mạng lưới đồng tác giả, tổ chức và chủ đề.", fields: ["trích dẫn", "tác giả", "đơn vị", "chủ đề"], bestFor: "xu hướng, mạng lưới, bản đồ công bố" },
+      { label: "Nghiên cứu web công khai", title: "Dữ liệu web công khai", description: "Thu thập bản ghi có cấu trúc từ tin tuyển dụng, trang chính sách, chương trình đại học, danh mục công khai hoặc siêu dữ liệu tin tức.", fields: ["URL", "phân loại", "ngày", "mã bản ghi"], bestFor: "chính sách, việc làm, giáo dục, danh mục công" },
+      { label: "Chuẩn bị dữ liệu", title: "Làm sạch dữ liệu", description: "Làm sạch và chuẩn hóa tệp CSV, Excel, JSON hoặc dữ liệu xuất sẵn để phục vụ phân tích và báo cáo.", fields: ["khử trùng", "chuẩn hóa", "kiểm tra", "lập tài liệu"], bestFor: "tệp CSV và Excel lộn xộn" },
     ],
   },
   deliverables: {
@@ -217,6 +243,8 @@ const vi: typeof en = {
     title: "Bạn sẽ nhận được gì",
     description: "Mỗi bộ dữ liệu đi kèm các tệp giúp quy trình dễ kiểm tra, phân tích và giải trình hơn.",
     badge: "Bao gồm khi bàn giao",
+    packageLabel: "Gói bàn giao",
+    packageSummary: "Tệp thô · Dữ liệu sạch · Tài liệu · Quy trình tái lập",
     items: [
       ["raw_data.json", "Bản ghi gốc đã thu thập khi phù hợp."],
       ["cleaned_dataset.csv", "Bộ dữ liệu có cấu trúc, sẵn sàng phân tích."],
@@ -228,7 +256,15 @@ const vi: typeof en = {
     ],
   },
   standards: {
-    summaryItems: ["Quy trình nghiên cứu", "Có tài liệu đi kèm", "Chú trọng đạo đức", "Sẵn sàng phân tích", "Có thể tái lập"],
+    eyebrow: "Điểm khác biệt",
+    title: "Dữ liệu sẵn sàng cho nghiên cứu không chỉ là trích xuất",
+    description: "Mỗi dự án được xác định theo quyền truy cập, yêu cầu tài liệu và nhu cầu phân tích.",
+    items: [
+      ["01", "Đánh giá trước khi thu thập", "Kiểm tra nguồn, trường dữ liệu, rủi ro và giới hạn trước khi triển khai toàn bộ."],
+      ["02", "Mặc định có tài liệu", "Nhận ghi chú nguồn, định nghĩa trường và hồ sơ rõ ràng về dữ liệu đã thu thập."],
+      ["03", "Truy cập nguồn có cân nhắc đạo đức", "Sử dụng nguồn công khai, được phép, nguồn mở, có API hoặc được khách hàng ủy quyền."],
+      ["04", "Bàn giao có thể tái lập", "Kèm mã, notebook hoặc ghi chú phương pháp khi quy trình nghiên cứu yêu cầu."],
+    ],
   },
   ethics: {
     accessLabel: "Giao thức truy cập",

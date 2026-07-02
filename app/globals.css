@@ -5,22 +5,29 @@
   --surface: #FFFFFF;
   --surface-subtle: #F0FDFA;
   --ink: #1F2937;
-  --ink-muted: #566761;
-  --ink-faint: #7D8C87;
+  --ink-muted: #64748B;
+  --ink-faint: #82908B;
   --line: #DDE7E2;
   --line-strong: #CBD5E1;
-  --accent: #0D9488;
-  --accent-strong: #0F766E;
+  --accent: #00A78E;
+  --accent-strong: #00796B;
   --accent-bright: #14B8A6;
   --accent-soft: #E6F4F1;
   --accent-softer: #F0FDFA;
   --accent-border: #99F6E4;
+  --cream: #FAF7EF;
+  --cream-strong: #F3EBDD;
+  --deep-teal: #073B3A;
+  --deep-teal-2: #0D4A43;
+  --soft-blue: #EFF6FF;
+  --gold: #C79A3B;
+  --gold-soft: #F8E7B4;
   --dark: #111827;
   --radius-sm: 0.625rem;
   --radius-md: 0.875rem;
   --radius-lg: 1.375rem;
-  --shadow-card: 0 18px 50px -38px rgba(13, 148, 136, 0.18);
-  --shadow-panel: 0 32px 72px -46px rgba(13, 148, 136, 0.22);
+  --shadow-card: 0 18px 50px -38px rgba(0, 121, 107, 0.18);
+  --shadow-panel: 0 32px 72px -46px rgba(0, 121, 107, 0.24);
   --section-space: clamp(4rem, 6.5vw, 7rem);
 }
 
@@ -49,6 +56,27 @@ body {
 a,
 button {
   -webkit-tap-highlight-color: transparent;
+}
+
+.theme-hero,
+.theme-cream {
+  background: var(--cream);
+}
+
+.theme-mint {
+  background: var(--accent-softer);
+}
+
+.theme-blue {
+  background: var(--soft-blue);
+}
+
+.theme-dark {
+  background: var(--deep-teal);
+}
+
+.theme-form {
+  background: linear-gradient(180deg, var(--canvas) 0%, var(--accent-soft) 100%);
 }
 
 .technical-grid {
