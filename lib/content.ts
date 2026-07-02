@@ -167,7 +167,6 @@ const vi: typeof en = {
   workflow: {
     eyebrow: "Quy trình nghiên cứu",
     title: "Cấu hình một lần.\nThu thập có cơ sở.",
-    description: "Bắt đầu bằng đánh giá khả thi, kiểm chứng trên một mẫu nhỏ, sau đó mới triển khai bộ dữ liệu nghiên cứu đầy đủ.",
     state: "Trước khi thu thập",
     stateValue: "Chốt phạm vi dự án trước khi thu thập dữ liệu",
     required: "Bước đầu bắt buộc",

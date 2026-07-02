@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "Research Data Lab | Research-ready datasets",
   description:
     "Research-ready data collection, cleaning, documentation, and reproducible delivery for thesis and academic projects.",
-  metadataBase: new URL("https://researchdatalab.com"),
+  metadataBase: new URL("https://researchdatalab.xyz"),
   openGraph: {
     title: "Research Data Lab | Research-ready datasets",
     description:
