@@ -5,7 +5,6 @@ const en = {
     links: [
       ["Services", "#services"],
       ["Process", "#process"],
-      ["Sample review", "#sample-review"],
       ["Deliverables", "#deliverables"],
       ["Ethics", "#ethics"],
       ["Packages", "#packages"],
@@ -134,7 +133,7 @@ const en = {
 
 const vi: typeof en = {
   nav: {
-    links: [["Dịch vụ", "#services"], ["Quy trình", "#process"], ["Mẫu đánh giá", "#sample-review"], ["Bàn giao", "#deliverables"], ["Đạo đức", "#ethics"], ["Gói dịch vụ", "#packages"]],
+    links: [["Dịch vụ", "#services"], ["Quy trình", "#process"], ["Bàn giao", "#deliverables"], ["Đạo đức", "#ethics"], ["Gói dịch vụ", "#packages"]],
     descriptor: "hệ thống dữ liệu nghiên cứu",
     cta: "Kiểm tra tính khả thi miễn phí",
     open: "Mở menu điều hướng",
