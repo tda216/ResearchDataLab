@@ -270,12 +270,32 @@ export function LandingPage({ locale }: { locale: Locale }) {
               </div>
             </RevealOnScroll>
             <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
-              {copy.deliverables.items.map(([name, description], index) => (
-                <RevealOnScroll key={name} delay={(index % 4) * 0.05} className={index === 6 ? "sm:col-span-2" : ""}>
-                  <FileCard name={name} description={description} size={index === 6 ? "wide" : "standard"} />
+              {copy.deliverables.items.slice(0, 4).map(([name, description], index) => (
+                <RevealOnScroll key={name} delay={(index % 4) * 0.05}>
+                  <FileCard name={name} description={description} size="standard" />
+                </RevealOnScroll>
+              ))}
+              
+              {copy.deliverables.items.slice(4).map(([name, description], index) => (
+                <RevealOnScroll key={name} delay={(index % 4) * 0.05} className={`hidden lg:block ${index === 2 ? "lg:col-span-2" : ""}`}>
+                  <FileCard name={name} description={description} size={index === 2 ? "wide" : "standard"} />
                 </RevealOnScroll>
               ))}
             </div>
+
+            <details className="mt-6 lg:hidden group">
+              <summary className="focus-ring cursor-pointer list-none flex items-center justify-center gap-2 py-3 text-[14px] font-semibold text-[var(--accent-strong)] bg-white rounded-lg border border-[var(--line-strong)] shadow-sm transition-colors hover:border-[var(--accent)] hover:bg-[var(--accent-soft)]">
+                {locale === "vi" ? "Xem thêm tệp bàn giao" : "More deliverables"}
+                <span className="group-open:rotate-180 transition-transform duration-300">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </summary>
+              <div className="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-md)] border bg-[var(--line)] sm:grid-cols-2">
+                {copy.deliverables.items.slice(4).map(([name, description], index) => (
+                  <FileCard key={name} name={name} description={description} size={index === 2 ? "wide" : "standard"} />
+                ))}
+              </div>
+            </details>
 
           </Container>
         </Section>
@@ -311,11 +331,11 @@ export function LandingPage({ locale }: { locale: Locale }) {
                       {copy.ethics.items.map((item, index) => {
                         const Icon = safeguardIcons[index] || Check;
                         return (
-                          <li key={item} className="group grid grid-cols-[3rem_1fr] items-center gap-4 py-4 sm:py-5 transition-colors hover:bg-slate-50/50">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--line-strong)] bg-white shadow-sm transition-colors group-hover:border-[var(--accent)]/30 group-hover:bg-[var(--accent-soft)]">
+                          <li key={item} className="group grid grid-cols-[2.25rem_1fr] sm:grid-cols-[3rem_1fr] items-center gap-3 sm:gap-4 py-3 sm:py-5 transition-colors hover:bg-slate-50/50">
+                            <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg border border-[var(--line-strong)] bg-white shadow-sm transition-colors group-hover:border-[var(--accent)]/30 group-hover:bg-[var(--accent-soft)]">
                               <Icon size={18} className="text-[var(--ink-muted)] group-hover:text-[var(--accent-strong)] transition-colors" strokeWidth={2} />
                             </div>
-                            <span className="text-[14.5px] font-medium leading-6 text-[var(--ink)]">{item}</span>
+                            <span className="text-[14px] sm:text-[14.5px] font-medium leading-6 text-[var(--ink)]">{item}</span>
                           </li>
                         );
                       })}

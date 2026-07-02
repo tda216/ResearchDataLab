@@ -99,7 +99,7 @@ export function SectionHeader({
   );
 }
 
-type ReportField = { label: string; value: string };
+type ReportField = { label: string; value: string | string[] };
 type FeasibilityReportContent = {
   reportLabel: string;
   statusLabel: string;
@@ -136,20 +136,29 @@ export function FeasibilityReportCard({ content }: { content: FeasibilityReportC
           {content.statusLabel}
         </Badge>
       </div>
-      <div className="relative p-6 sm:p-10">
-        <div className="mb-5 flex flex-wrap gap-2 border-b border-[var(--line)] pb-5">
+      <div className="relative p-4 sm:p-10">
+        <div className="mb-4 sm:mb-5 flex flex-wrap gap-2 border-b border-[var(--line)] pb-4 sm:pb-5">
           {content.badges.map((badge) => (
             <span key={badge} className="rounded-md bg-[var(--accent-soft)] px-2.5 py-1.5 font-[family-name:var(--font-mono)] text-[12px] font-semibold text-[var(--accent-strong)]">{badge}</span>
           ))}
         </div>
         <div className="divide-y divide-[var(--line)]">
         {rows.map((row, index) => (
-          <div key={row.label} className="grid sm:grid-cols-[1fr_2.5fr] gap-2 sm:gap-6 py-4 first:pt-0 last:pb-0 group">
+          <div key={row.label} className="grid sm:grid-cols-[1fr_2.5fr] gap-1 sm:gap-6 py-3 sm:py-4 first:pt-0 last:pb-0 group">
             <div className="font-[family-name:var(--font-mono)] text-[12.5px] lg:text-[13px] font-medium uppercase tracking-[0.03em] text-slate-500 group-hover:text-[var(--accent)] transition-colors mt-0.5">
               {row.label}
             </div>
-            <div className={`text-[15px] leading-7 ${index === rows.length - 2 ? "font-medium text-[var(--accent-strong)]" : "text-[var(--ink)]"}`}>
-              {row.value}
+            <div className={`text-[14.5px] sm:text-[15px] leading-[1.65] sm:leading-7 ${index === rows.length - 2 ? "font-medium text-[var(--accent-strong)]" : "text-[var(--ink)]"}`}>
+              {Array.isArray(row.value) ? (
+                <div className="flex flex-col gap-1.5 mt-1 sm:mt-0">
+                  {row.value.map(val => (
+                    <span key={val} className="inline-flex w-fit items-center gap-2 font-medium text-amber-700 bg-amber-50 border border-amber-200/60 rounded-md px-2.5 py-1 text-[13px] leading-snug">
+                      <span className="shrink-0 size-1.5 rounded-full bg-amber-500" />
+                      {val}
+                    </span>
+                  ))}
+                </div>
+              ) : row.value}
             </div>
           </div>
         ))}
@@ -173,8 +182,8 @@ export function FeatureCard({
   className?: string;
 }) {
   return (
-    <article className={`group relative border-t border-[var(--line-strong)] py-6 pr-4 transition-colors duration-300 hover:border-[var(--accent)] ${className}`}>
-      <div className="mb-8 flex items-center justify-between">
+    <article className={`group relative border-t border-[var(--line-strong)] py-5 sm:py-6 pr-4 transition-colors duration-300 hover:border-[var(--accent)] ${className}`}>
+      <div className="mb-5 sm:mb-8 flex items-center justify-between">
         <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[var(--line)] bg-white text-[var(--accent)] transition-colors duration-300 group-hover:border-[var(--accent)]/40 group-hover:bg-[var(--accent-soft)]">
           <Icon size={18} strokeWidth={2} />
         </div>
@@ -215,7 +224,7 @@ export function FileCard({
   const Icon = config.icon;
 
   return (
-    <article className={`group relative min-h-[14rem] flex flex-col justify-between overflow-hidden bg-white p-6 border border-transparent transition-all duration-400 ease-out hover:z-10 hover:-translate-y-1.5 ${config.border} ${config.shadow} ${size === "wide" ? "sm:col-span-2" : ""}`}>
+    <article className={`group relative min-h-fit sm:min-h-[14rem] flex flex-col justify-between overflow-hidden bg-white p-5 sm:p-6 border border-transparent transition-all duration-400 ease-out hover:z-10 hover:-translate-y-1.5 ${config.border} ${config.shadow} ${size === "wide" ? "sm:col-span-2" : ""}`}>
       <div>
         <div className="flex items-start justify-between">
           <span className={`flex size-9 items-center justify-center rounded-md border border-[var(--line-strong)] ${config.color} ${config.bg} shadow-sm transition-colors`}>
@@ -225,7 +234,7 @@ export function FileCard({
         </div>
         <div className="mt-7">
           <h3 className="break-all font-[family-name:var(--font-mono)] text-[14.5px] font-bold tracking-tight text-[var(--ink)] transition-colors group-hover:text-[var(--ink)]">{name}</h3>
-          <p className="mt-2.5 max-w-sm text-[14px] leading-[1.65] text-[var(--ink-muted)]">{description}</p>
+          <p className="mt-2.5 max-w-sm text-[14px] leading-[1.65] text-[var(--ink-muted)] line-clamp-2 sm:line-clamp-none">{description}</p>
         </div>
       </div>
       {fields && (
@@ -243,7 +252,7 @@ export function FileCard({
 
 export function StepCard({ number, title, description, isLast = false }: { number: string; title: string; description: string; isLast?: boolean }) {
   return (
-    <article className="group relative flex flex-1 flex-col gap-6 pl-10 pt-6 sm:pl-12 sm:pt-8 md:gap-8 md:px-4 md:pt-0">
+    <article className="group relative flex flex-1 flex-col gap-4 sm:gap-6 pl-10 pt-5 sm:pl-12 sm:pt-8 md:gap-8 md:px-4 md:pt-0">
       {/* Connecting line (Desktop) */}
       {!isLast && (
         <div className="absolute left-[calc(50%+2rem)] right-[calc(-50%+2rem)] top-[1.125rem] hidden h-[2px] bg-[var(--line-strong)] md:block" />

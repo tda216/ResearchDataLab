@@ -42,7 +42,9 @@ export function Header({ locale }: { locale: Locale }) {
   useEffect(() => {
     const updateScrolled = () => {
       setScrolled(window.scrollY > 32);
-      setShowStickyCta(window.scrollY > 600);
+      const formEl = document.getElementById("feasibility-form");
+      const isFormVisible = formEl ? formEl.getBoundingClientRect().top < window.innerHeight + 100 : false;
+      setShowStickyCta(window.scrollY > 600 && !isFormVisible);
     };
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-header-theme]"));
     const observer = new IntersectionObserver(
@@ -133,17 +135,22 @@ export function Header({ locale }: { locale: Locale }) {
       <AnimatePresence>
         {showStickyCta && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-4 left-4 right-4 z-50 md:hidden"
+            exit={{ opacity: 0, y: 30 }}
+            className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-900/10 bg-white/95 px-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] pt-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur-xl md:hidden"
           >
-            <a
-              href="#feasibility-form"
-              className="flex min-h-14 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent)] px-5 text-[15px] font-bold text-white shadow-[0_16px_32px_-12px_rgba(0,167,142,0.6)] transition-all duration-300 active:scale-[0.98]"
-            >
-              {copy.cta}
-            </a>
+            <div className="flex items-center justify-between gap-4">
+              <span className="font-[family-name:var(--font-editorial)] text-[18px] font-medium text-[var(--ink)]">
+                {locale === "vi" ? "Kiểm tra tính khả thi" : "Free feasibility check"}
+              </span>
+              <a
+                href="#feasibility-form"
+                className="flex h-11 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--accent)] px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 active:scale-[0.98]"
+              >
+                {locale === "vi" ? "Bắt đầu" : "Start"}
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
