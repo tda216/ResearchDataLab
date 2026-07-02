@@ -232,16 +232,21 @@ export function LandingPage({ locale }: { locale: Locale }) {
               {copy.useCases.items.map((item, index) => {
                 const Icon = useCaseIcons[index];
                 return (
-                  <RevealOnScroll key={item.title} delay={index * 0.05}>
-                    <article className="group bg-white p-6 transition duration-300 hover:bg-[var(--surface-subtle)]/45 sm:min-h-[16rem] sm:p-8">
+                  <RevealOnScroll key={item.title} delay={index * 0.05} className="h-full">
+                    <article className="group flex h-full flex-col bg-white p-6 transition duration-300 hover:bg-[var(--surface-subtle)]/45 sm:p-8">
                       <div className="flex items-start justify-between">
                         <Icon size={20} className="text-[var(--accent)]" strokeWidth={1.75} />
                         <span className="text-[13px] font-semibold tracking-[-0.01em] text-[var(--accent-strong)]">{item.label}</span>
                       </div>
                       <h3 className="mt-8 text-2xl font-semibold tracking-[-0.035em] group-hover:text-[var(--accent)] transition-colors">{item.title}</h3>
                       <p className="mt-3 max-w-xl text-[15px] leading-7 text-[var(--ink-muted)]">{item.description}</p>
-                      <div className="mt-6 flex flex-wrap gap-x-2 gap-y-2 border-t pt-5">{item.fields.map((field) => <span key={field} className="inline-flex rounded-full bg-[var(--surface-subtle)] px-3 py-1.5 text-[13px] font-medium text-[var(--ink-muted)] transition-colors group-hover:bg-[var(--accent-soft)] group-hover:text-[var(--accent-strong)]">{field}</span>)}</div>
-                      <p className="mt-5 text-[13px] leading-5 text-[var(--ink-muted)]"><span className="font-semibold text-[var(--ink)]">{locale === "vi" ? "Phù hợp cho:" : "Best for:"}</span> {item.bestFor}</p>
+                      
+                      <div className="mt-auto pt-8">
+                        <div className="flex flex-wrap gap-x-2 gap-y-2 border-t pt-5">
+                          {item.fields.map((field) => <span key={field} className="inline-flex rounded-full bg-[var(--surface-subtle)] px-3 py-1.5 text-[13px] font-medium text-[var(--ink-muted)] transition-colors group-hover:bg-[var(--accent-soft)] group-hover:text-[var(--accent-strong)]">{field}</span>)}
+                        </div>
+                        <p className="mt-5 text-[13px] leading-5 text-[var(--ink-muted)]"><span className="font-semibold text-[var(--ink)]">{locale === "vi" ? "Phù hợp cho:" : "Best for:"}</span> {item.bestFor}</p>
+                      </div>
                     </article>
                   </RevealOnScroll>
                 );
